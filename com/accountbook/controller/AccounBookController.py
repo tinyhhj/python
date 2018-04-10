@@ -7,7 +7,7 @@ from com.accountbook.repository.AccountBookRepository import AccountBookReposito
 '''
 어플리케이션의 route 경로를 담당
 '''
-@app.route("/parseMessage" , methods=["POST"])
+@app.route("/parse/message" , methods=["POST"])
 def parseMessage():
     try :
         return AccountBookService.getInstance().parseMessage();
@@ -84,8 +84,12 @@ def deleteCardCompanies():
         logger.debug('exception occured!' + str(e))
         return redirect("/home", 302)
 
-def make_response(response):
-    res = {};
-    res.setdefault('result' , response);
-    return json.dumps(res);
+@app.route('/cardcompany/update' , methods=['PUT'])
+def updateCardCompanies():
+    try:
+        return AccountBookService.getInstance().updateCardCompanies();
+    except Exception as e:
+        logger.debug('exception occured!' + str(e))
+        return redirect("/home", 302)
+
 

@@ -27,7 +27,7 @@ export default class AjaxUtils {
             method: 'post',
             url: url,
             data: data
-        });
+        }).catch(this.errorHandler);
     }
 
     static delete(url , data={} , props={}) {
@@ -35,7 +35,14 @@ export default class AjaxUtils {
             method: 'delete',
             url : url,
             data : data,
-        });
+        }).catch(this.errorHandler);
+    }
+    static put(url , data={} , props ={}) {
+        return axios({
+            method: 'put',
+            url : url,
+            data : data,
+        }).catch(this.errorHandler);
     }
     static errorHandler(err) {
         console.log('Error occuered! : ' + err);

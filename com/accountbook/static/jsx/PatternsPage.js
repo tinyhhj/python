@@ -50,7 +50,9 @@ export default class PatternsPage extends React.Component {
             const { _id, company_info_id , use_yn , ...sub_props} = item;
             if(idx === 0 ) {
                 col_contents = Object.keys(sub_props);
-                bodyChildrenList.push(<ListGroupItemRow key={_id+".header"}{...{num_col , col_contents, bsStyle:"success"}}/>)
+                bodyChildrenList.push(<ListGroupItemRow header={true}
+                                                        key={_id+".header"}
+                                                        {...{num_col , col_contents, bsStyle:"success"}}/>)
                 selectedContents.header = col_contents;
             }
             col_contents = Object.values(sub_props);
@@ -58,7 +60,7 @@ export default class PatternsPage extends React.Component {
             col_contents = col_contents.map(item=>item.length > 100 ? item.replace(/\s/g,'').substr(0,20).concat("..."):item);
             bodyChildrenList.push(<ListGroupItemRow key={_id}
                                                     onClick={()=>this.handleShow(_id)}
-                                                    {...{num_col , col_contents ,_id , style:{margin:"3px"}}}/>);
+                                                    {...{num_col , col_contents ,_id }}/>);
         });
         const bodyChildren = (<ListGroup >{bodyChildrenList}</ListGroup>)
 

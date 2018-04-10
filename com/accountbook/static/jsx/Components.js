@@ -20,22 +20,23 @@ const MainContents = ({children , marginLeft}) => {
     );
 }
 
-const ListGroupItemRow = ({num_col , col_contents ,header, checkRef, rowClick, ...props}) => {
+const ListGroupItemRow = ({num_col , col_contents ,header, checkRef , checked, rowClick,handleSelectedItem,itemkey, ...props}) => {
     const children = [];
     for(let i = 0 ; i < num_col ; i++) {
-        children.push(<div key={`${i}`} style={{float:"left", width:parseInt(90/num_col)+"%"}}>{col_contents[i]}</div>);
+        children.push(<div key={`${i}`} style={{marginTop:"10px", float:"left", width:parseInt(90/num_col)+"%"}}>{col_contents[i]}</div>);
     }
 
     return (
-        <ListGroupItem {...props } onClick={rowClick}>
-            {!header && <Checkbox inputRef={checkRef}style={{float: "left"}} inline/>}
+        <ListGroupItem {...props } onClick={rowClick} style={{marginTop:"5px"}}>
+            {header ? <div style={{float:"left" , width:"20px"}}>&nbsp;</div> : <Checkbox inputRef={checkRef} checked={checked} style={{ float: "left"}} />}
             {children}
+            {!header && <i className="material-icons" style={{marginTop:"10px", float:"right"}} onClick={e=>{e.stopPropagation();handleSelectedItem(itemkey);}}>mode_edit</i>}
             <div style={{clear:"both"}}></div>
         </ListGroupItem>
     )
 }
 
-const ModalForCreateCardCompany = ({onChange ,inputCheck ,state , onClick}) =>
+const ModalForCreateCardCompany = ({onChange ,inputCheck ,state , onClick , modalButtonDesc}) =>
     [<FieldGroup
                key="cardCompanyName"
 							 id="cardCompanyName_id"
@@ -58,7 +59,7 @@ const ModalForCreateCardCompany = ({onChange ,inputCheck ,state , onClick}) =>
                value={state.cardCompanyNumber}
 							/>,<Button key="createButton"
                     bsStyle="primary"
-                    onClick={onClick}>생성</Button>]
+                    onClick={onClick}>{modalButtonDesc}</Button>]
 
 
 

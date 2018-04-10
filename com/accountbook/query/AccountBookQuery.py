@@ -27,6 +27,15 @@ class AccountBookQuery:
                                       where card_company_name = %s
                                       and   card_company_number = %s
                                    """
+    find_a_card_company_info = """ select * 
+                                   from company_info
+                                   where card_company_name = %s
+                                   and   card_company_number = %s"""
+    update_card_companies_info = """update company_info
+                                    set card_company_name = %s,
+                                        card_company_number= %s
+                                    where _id = %s
+                                """
     def delete_card_companies_info(self , id_num ):
         prefix =  """ update company_info
                    set use_yn ='N'

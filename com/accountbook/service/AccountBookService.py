@@ -41,10 +41,10 @@ class AccountBookService:
                 mo = p.search(message);
                 if mo:
                     logger.debug('message_pattern : ' + pattern_row['message_pattern'])
-                    #logger.debug(mo.groups())
+                    logger.debug(mo.groups())
                     #logger.debug('response: ' + json.dumps(dict(zip(position_key , [mo.groups()[i] for i in position_info[pattern_row['card_company_number']]]))))
                     result_obj = dict(zip(position_key , [mo.groups()[i] for i in position_info[pattern_row['card_company_number']]]));
-                    print('comehere');
+                    print('comehere ' + result_obj.__str__());
                     result_obj.setdefault('result' , 'success');
                     return json.dumps(result_obj)
                 # 패턴을 못찾는경우라면 unknown_message_pattern테이블에 insert
@@ -112,13 +112,11 @@ class AccountBookService:
         requestData = self.json_load(request.data);
         cardcompanyName = requestData['cardCompanyName'];
         cardCompanyNumber = requestData['cardCompanyNumber'];
-        try :
+        results = self.repo.selectQuery(self.query.find_a_card_company_info , (cardcompanyName, cardCompanyNumber));
+        if len(results) > 0:
+            self.repo.executeQuery(self.query.update_card_companies_use_yn, (cardcompanyName, cardCompanyNumber));
+        else:
             self.repo.executeQuery(self.query.create_card_companies_info , ( cardcompanyName, cardCompanyNumber ));
-        except Exception as e:
-            if("uc_company_info" in e.__str__()):
-                self.repo.executeQuery(self.query.update_card_companies_use_yn , ( cardcompanyName, cardCompanyNumber ));
-            raise e;
-        print(requestData);
         results ={};
         results.setdefault('errorCode','0');
         results.setdefault('message','success');
@@ -135,8 +133,18 @@ class AccountBookService:
         requestData = self.json_load(request.data);
         data = requestData['_id'];
         print(requestData);
-        self.repo.executeQuery(self.query.delete_card_companies_info(self , len(data)) , tuple(data));
+        if( len(data) > 0 ):
+            self.repo.executeQuery(self.query.delete_card_companies_info(self , len(data)) , tuple(data));
         return json.dumps(self.make_response());
+    def updateCardCompanies(self):
+        requestData = self.json_load(request.data);
+        #requestData is not empty
+        if(bool(requestData)):
+            self.repo.executeQuery(self.query.update_card_companies_info , (requestData['cardCompanyName'],
+                                                                            requestData['cardCompanyNumber'],
+                                                                            requestData['_id'],))
+        return json.dumps(self.make_response());
+
 
 
 

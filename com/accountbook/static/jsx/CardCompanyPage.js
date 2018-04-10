@@ -15,8 +15,9 @@ export default class CardCompanyPage extends React.Component {
             cardCompanyNumber:'',
             showAlert:false,
             showAlertMessage:'',
+            deleteList:{},
+            selectedItem: undefined,
         }
-        this.deleteList= {};
         this.handleClose = this.handleClose.bind(this);
         this.listAll = this.listAll.bind(this);
         this.handleCreateComapnyInfo = this.handleCreateComapnyInfo.bind(this);
@@ -24,6 +25,8 @@ export default class CardCompanyPage extends React.Component {
         this.handleInputChange= this.handleInputChange.bind(this);
         this.handleInputCheck = this.handleInputCheck.bind(this);
         this.handleDeleteItem = this.handleDeleteItem.bind(this);
+        this.handleUpdateItem = this.handleUpdateItem.bind(this);
+        this.handleSelectedItem = this.handleSelectedItem.bind(this);
     }
 
     componentDidMount() {
@@ -39,7 +42,7 @@ export default class CardCompanyPage extends React.Component {
                 cardCompanyName: this.state.cardCompanyName,
                 cardCompanyNumber: this.state.cardCompanyNumber
             })
-                .then(()=>{this.listAll(); this.setState({showAlert:false , showAlertMessage:'' , show:false , cardCompanyNumber:'',cardCompanyName:''})});
+                .then(()=>this.listAll());
         }
         else{
             this.setState({showAlertMessage:'값을 입력해주세요' ,showAlert:true});
@@ -47,16 +50,24 @@ export default class CardCompanyPage extends React.Component {
     }
 
     handleClose() {
-        this.setState({show:false , cardCompanyName : '' , cardCompanyNumber: ''});
+        // this.setState({show:false , cardCompanyName : '' , cardCompanyNumber: ''});
+        this.listAll();
     }
 
     listAll() {
         Components.AjaxUtils.get('/cardcompany/search')
-            .then(res => this.setState({cardCompanies : res.data }));
+            .then(res => this.setState({cardCompanies : res.data,
+                                        showAlert:false ,
+                                        showAlertMessage:'' ,
+                                        show:false ,
+                                        cardCompanyNumber:'',
+                                        cardCompanyName:'',
+                                        deleteList: res.data.reduce((a,b)=>{a[b._id] = false; return a;},{}),
+                                        selectedItem: undefined, }));
     }
 
     handleInputChange(e) {
-        console.log(e.target);
+        console.log(e.target.value);
         if( e.target.placeholder === "카드회사명" ) {
             this.setState({cardCompanyName:e.target.value});
         }else if( e.target.placeholder === "카드회사번호") {
@@ -69,7 +80,7 @@ export default class CardCompanyPage extends React.Component {
         if(succ_len === undefined) succ_len=5;
         if(error_len === undefined ) error_len=0;
 
-        const len = target.length;
+        const len = target ? target.length : 0;
         if(len > succ_len) return 'success';
         else if(len > error_len) return 'error';
         return null;
@@ -85,50 +96,93 @@ export default class CardCompanyPage extends React.Component {
     }
 
     handleDeleteItem() {
-        const {deleteList} = this;
+        const {deleteList} = this.state;
         const reqData = {_id:[]};
-        Object.keys(deleteList).filter(k=> deleteList[k].checked).map(k=>reqData._id.push(k));
-        AjaxUtils.delete("/cardcompany/delete" , reqData )
-            .then(() => this.listAll())
-            .catch(err => err);
+        Object.keys(deleteList).filter(k=>deleteList[k]).map(k=>reqData._id.push(k));
+        if(reqData._id.length) {
+            AjaxUtils.delete("/cardcompany/delete", reqData)
+                .then(() => this.listAll())
+                .catch(err => err);
+        }
+    }
+
+    handleUpdateItem() {
+        const {cardCompanyName , cardCompanyNumber , selectedItem} = this.state;
+        if( this.handleInputCheck(cardCompanyName , 0) === 'success'
+            && this.handleInputCheck(cardCompanyNumber , 0) === 'success') {
+            AjaxUtils.put('/cardcompany/update', {  _id: selectedItem ,
+                                                    cardCompanyName:cardCompanyName,
+                                                    cardCompanyNumber:cardCompanyNumber})
+                .then(()=>this.listAll());
+        }
+    }
+
+    handleSelectedItem(_id) {
+        const {cardCompanies} = this.state;
+        const item = cardCompanies.find(e=>e._id === _id);
+        this.setState({ selectedItem : _id , show: true ,
+                        cardCompanyName: item.card_company_name,
+                        cardCompanyNumber: item.card_company_number,});
     }
     render() {
+        const {cardCompanyName, cardCompanyNumber , selectedItem , deleteList} = this.state;
         const headerProps = {navItem:<NavItem eventKey={3} href="#">PropsItem</NavItem>}
         const headerChildren = [];
         const bodyProps ={};
         const bodyChildren =[];
         const modalBody =[];
-
+        let inputValue ;
+        let handleModalClick;
+        let modalButtonDesc;
 
         bodyProps.sideBarContents =this.makeSideBarMenu();
+
+        if(selectedItem) {
+            inputValue = {  cardCompanyName: cardCompanyName,
+                            cardCompanyNumber: cardCompanyNumber };
+            handleModalClick = this.handleUpdateItem;
+            modalButtonDesc = "수정";
+        }
+        else {
+            inputValue = this.state;
+            handleModalClick=this.handleCreateComapnyInfo;
+            modalButtonDesc = "생성";
+        }
 
         modalBody.push(<Components.ModalForCreateCardCompany key ="createModalBody"
                                                              onChange={this.handleInputChange}
                                                              inputCheck = {this.handleInputCheck}
-                                                             state={this.state}
-                                                             onClick={this.handleCreateComapnyInfo}/>);
+                                                             state={inputValue}
+                                                             onClick={handleModalClick}
+                                                             modalButtonDesc={modalButtonDesc}/>);
 
 
 
         this.state.cardCompanies.length
-        && bodyChildren.push(<Components.ListGroupItemRow   num_col={2}
+        && bodyChildren.push(<Components.ListGroupItemRow   num_col={3}
                                                             col_contents={Object.keys(this.state.cardCompanies[0]).filter(item => item !== '_id')}
                                                             key={0}
                                                             header={true}
                                                             bsStyle="success"
-                                                            style={{"textAlign":"center"}}/>)
+                                                            style={{"textAlign":"center"}}
+                                                            />)
         && this.state.cardCompanies.map((item,idx )=> {
             const {_id , ...remain} = item;
+            let checkBoxRef;
             bodyChildren.push(<Components.ListGroupItemRow key={_id}
-                                                           num_col={2}
+                                                           num_col={3}
                                                            col_contents={Object.values(remain)}
                                                            itemkey={_id}
                                                            style={{"textAlign":"center"}}
-                                                           checkRef={r => this.deleteList[_id] = r}
+                                                           checkRef={r=>checkBoxRef = r}
+                                                           checked={deleteList[_id]}
                                                            rowClick = {(e)=>{
-                                                               if( e.target.nodeName === 'INPUT' ) return;
-                                                               this.deleteList[_id].checked  = (this.deleteList[_id].checked ? false : true)
-                                                           }}/>);
+                                                                   if(e.target.nodeName !== 'INPUT')
+                                                                       checkBoxRef.checked =  !deleteList[_id];
+                                                                   this.setState({deleteList:{...deleteList , [_id]:!deleteList[_id]}});
+                                                                   console.log({...deleteList , [_id]:!deleteList[_id]});
+                                                           }}
+                                                           handleSelectedItem = {this.handleSelectedItem}/>);
         });
         return(
             <div>
