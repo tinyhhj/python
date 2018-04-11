@@ -1,13 +1,11 @@
 import React from 'react';
-import Header from './Header';
-import Body from './Body';
-import axios from 'axios';
-import {ListGroup , ListGroupItem , Modal , Alert} from 'react-bootstrap';
-import {ListGroupItemRow} from "./Components";
-import AjaxUtils from "../../utils/AjaxUtils";
+import {ListGroup , Modal } from 'react-bootstrap';
+import {ListGroupItemRow , Body , AjaxUtils} from "Components";
+
 
 
 export default class PatternsPage extends React.Component {
+    static moduleName="message_pattern";
     constructor(props){
         super(props);
         this.state = {
@@ -36,8 +34,6 @@ export default class PatternsPage extends React.Component {
 
     render() {
         // this.state.patterns && this.state.patterns.map(item=>)
-        const headerProps = {};
-        const headerChildren= [];
         const bodyProps ={};
         const bodyChildrenList = [];
         const selectedContents ={};
@@ -68,9 +64,6 @@ export default class PatternsPage extends React.Component {
 
         return(
           <div>
-              <Header {...headerProps}>
-                  {headerChildren}
-              </Header>
               <Body {...bodyProps}>
               {bodyChildren}
               </Body>

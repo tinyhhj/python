@@ -1,8 +1,14 @@
 import React from 'react';
-import {ListGroupItem ,Button , Checkbox} from 'react-bootstrap';
-import AjaxUtils from '../../utils/AjaxUtils';
-import FieldGroup from './fieldGroup';
-
+import {ListGroupItem ,Button , Checkbox , NavItem} from 'react-bootstrap';
+import AjaxUtils from 'AjaxUtils';
+import FieldGroup from 'FieldGroup';
+import Body from 'Body';
+import Header from 'Header';
+import CompanyInfo from 'CompanyInfo';
+import MessagePattern from 'MessagePattern';
+import Home from 'Home';
+import Index from 'Index';
+import {v4} from 'uuid';
 
 const SideBar = ({children , width}) => {
     return (
@@ -63,5 +69,18 @@ const ModalForCreateCardCompany = ({onChange ,inputCheck ,state , onClick , moda
 
 
 
-export {SideBar , MainContents , ListGroupItemRow , AjaxUtils , ModalForCreateCardCompany};
+export {SideBar ,
+        MainContents ,
+        ListGroupItemRow ,
+        AjaxUtils ,
+        ModalForCreateCardCompany,
+        NavItem,
+        Body,
+        Header,
+        CompanyInfo,
+        MessagePattern,
+        Index,
+        v4,
+        Home,
+};
 

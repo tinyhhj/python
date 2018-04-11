@@ -30,7 +30,7 @@ export default class Header extends React.Component {
             <Navbar>
                 <Navbar.Header>
                     <Navbar.Brand>
-                        <a href="#brand">AccountBook</a>
+                        <a href={routes['home']}>AccountBook</a>
                     </Navbar.Brand>
                     <Navbar.Toggle />
                 </Navbar.Header>
@@ -38,9 +38,6 @@ export default class Header extends React.Component {
                     <Nav bsStyle="pills"
                          activeKey={this.props.selectedItem}
                          onSelect={this.props.handleSelectItem}>
-                        <NavItem eventKey={0} href="/home">HOME</NavItem>
-                        <NavItem eventKey={1} href="/patterns">Patterns</NavItem>
-                        <NavItem eventKey={1} href="/cardcompany">Card Company</NavItem>
                         {this.props.navItem}
                     </Nav>
                 </Navbar.Collapse>

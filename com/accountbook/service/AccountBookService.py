@@ -145,6 +145,11 @@ class AccountBookService:
                                                                             requestData['_id'],))
         return json.dumps(self.make_response());
 
+    def getMenus(self):
+        results = self.repo.selectQuery(self.query.get_all_menus, ());
+        if( len(results)):
+            return json.dumps(results)
+
 
 
 

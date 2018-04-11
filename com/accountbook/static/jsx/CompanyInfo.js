@@ -1,11 +1,10 @@
 import React from 'react';
-import * as Components from 'Components';
 import {NavItem , Button , Modal,Alert} from 'react-bootstrap';
-import Header from 'Header';
-import Body from 'Body';
-import AjaxUtils from "AjaxUtils";
+import {AjaxUtils, Body , Header ,ModalForCreateCardCompany ,ListGroupItemRow}from 'Components';
 
 export default class CardCompanyPage extends React.Component {
+    static moduleName="company_info";
+
     constructor(props) {
         super(props);
         this.state = {
@@ -38,7 +37,7 @@ export default class CardCompanyPage extends React.Component {
     handleCreateComapnyInfo(info) {
         if( this.handleInputCheck(this.state.cardCompanyName , 0) === 'success'
             && this.handleInputCheck(this.state.cardCompanyNumber, 0 ) === 'success') {
-            Components.AjaxUtils.post('/cardcompany/create', {
+            AjaxUtils.post(routes['create_company_info'], {
                 cardCompanyName: this.state.cardCompanyName,
                 cardCompanyNumber: this.state.cardCompanyNumber
             })
@@ -55,7 +54,7 @@ export default class CardCompanyPage extends React.Component {
     }
 
     listAll() {
-        Components.AjaxUtils.get('/cardcompany/search')
+        AjaxUtils.get(routes['get_company_infos'])
             .then(res => this.setState({cardCompanies : res.data,
                                         showAlert:false ,
                                         showAlertMessage:'' ,
@@ -100,7 +99,7 @@ export default class CardCompanyPage extends React.Component {
         const reqData = {_id:[]};
         Object.keys(deleteList).filter(k=>deleteList[k]).map(k=>reqData._id.push(k));
         if(reqData._id.length) {
-            AjaxUtils.delete("/cardcompany/delete", reqData)
+            AjaxUtils.delete(routes['delete_company_infos'], reqData)
                 .then(() => this.listAll())
                 .catch(err => err);
         }
@@ -110,7 +109,7 @@ export default class CardCompanyPage extends React.Component {
         const {cardCompanyName , cardCompanyNumber , selectedItem} = this.state;
         if( this.handleInputCheck(cardCompanyName , 0) === 'success'
             && this.handleInputCheck(cardCompanyNumber , 0) === 'success') {
-            AjaxUtils.put('/cardcompany/update', {  _id: selectedItem ,
+            AjaxUtils.put(routes['update_company_info'], {  _id: selectedItem ,
                                                     cardCompanyName:cardCompanyName,
                                                     cardCompanyNumber:cardCompanyNumber})
                 .then(()=>this.listAll());
@@ -126,8 +125,6 @@ export default class CardCompanyPage extends React.Component {
     }
     render() {
         const {cardCompanyName, cardCompanyNumber , selectedItem , deleteList} = this.state;
-        const headerProps = {navItem:<NavItem eventKey={3} href="#">PropsItem</NavItem>}
-        const headerChildren = [];
         const bodyProps ={};
         const bodyChildren =[];
         const modalBody =[];
@@ -149,7 +146,7 @@ export default class CardCompanyPage extends React.Component {
             modalButtonDesc = "생성";
         }
 
-        modalBody.push(<Components.ModalForCreateCardCompany key ="createModalBody"
+        modalBody.push(<ModalForCreateCardCompany key ="createModalBody"
                                                              onChange={this.handleInputChange}
                                                              inputCheck = {this.handleInputCheck}
                                                              state={inputValue}
@@ -159,7 +156,7 @@ export default class CardCompanyPage extends React.Component {
 
 
         this.state.cardCompanies.length
-        && bodyChildren.push(<Components.ListGroupItemRow   num_col={3}
+        && bodyChildren.push(<ListGroupItemRow   num_col={3}
                                                             col_contents={Object.keys(this.state.cardCompanies[0]).filter(item => item !== '_id')}
                                                             key={0}
                                                             header={true}
@@ -169,7 +166,7 @@ export default class CardCompanyPage extends React.Component {
         && this.state.cardCompanies.map((item,idx )=> {
             const {_id , ...remain} = item;
             let checkBoxRef;
-            bodyChildren.push(<Components.ListGroupItemRow key={_id}
+            bodyChildren.push(<ListGroupItemRow key={_id}
                                                            num_col={3}
                                                            col_contents={Object.values(remain)}
                                                            itemkey={_id}
@@ -186,9 +183,6 @@ export default class CardCompanyPage extends React.Component {
         });
         return(
             <div>
-                <Header {...headerProps}>
-                    {headerChildren}
-                </Header>
                 <Body {...bodyProps}>
                     {bodyChildren}
                 </Body>

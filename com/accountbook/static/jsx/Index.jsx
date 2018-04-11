@@ -11,6 +11,7 @@ import { Link } from 'react-router'
 
 
 export default class InputForm extends React.Component {
+	static moduleName = "index";
 	constructor(props) {
 		super(props);
 		this.state= {

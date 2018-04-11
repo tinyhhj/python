@@ -9,6 +9,9 @@ class AccountBookQuery:
                                    where A.use_yn = 'Y'
                                      and B.use_yn = 'Y'
                                      and a.company_info_id = b._id""";
+
+    get_all_menus = """show tables
+                        """
     find_a_user = """ select *
                         from admin
                         where admin_id = %s

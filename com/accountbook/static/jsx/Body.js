@@ -1,6 +1,5 @@
 import React from 'react';
-import {SideBar ,MainContents} from './Components';
-import {Button} from 'react-bootstrap';
+import {SideBar ,MainContents} from 'Components';
 export default class Body extends React.Component {
 
     constructor(props){
