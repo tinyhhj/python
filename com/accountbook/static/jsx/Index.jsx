@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import FieldGroup from './fieldGroup'
+import FieldGroup from './FieldGroup'
 import {Button
 		,ButtonToolbar
 		,Panel

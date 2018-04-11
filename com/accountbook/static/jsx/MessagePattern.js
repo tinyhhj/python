@@ -4,6 +4,7 @@ import Body from './Body';
 import axios from 'axios';
 import {ListGroup , ListGroupItem , Modal , Alert} from 'react-bootstrap';
 import {ListGroupItemRow} from "./Components";
+import AjaxUtils from "../../utils/AjaxUtils";
 
 
 export default class PatternsPage extends React.Component {
@@ -15,22 +16,22 @@ export default class PatternsPage extends React.Component {
             selectedId: undefined
         };
         this.handleShow = this.handleShow.bind(this);
-        this.handleClose = this.handleClose.bind(this);
+        this.getAllPatterns = this.getAllPatterns.bind(this);
     }
 
     componentDidMount() {
-        axios({
-            method: 'get',
-            url: '/patterns/search'
-        }).then( response => {this.setState({patterns : response.data});})
-            .catch( error => this.setState({patterns: []}));
+        this.getAllPatterns();
+    }
+
+    getAllPatterns() {
+        AjaxUtils.get(routes['get_message_patterns'])
+            .then(res => this.setState({patterns : res.data,
+                                        show : false,
+                                        selectedId : undefined,}));
     }
 
     handleShow(_id) {
         this.setState({show:true,selectedId:_id});
-    }
-    handleClose() {
-        this.setState({show:false,selectedId:undefined});
     }
 
     render() {
@@ -74,7 +75,7 @@ export default class PatternsPage extends React.Component {
               {bodyChildren}
               </Body>
               <Modal show={this.state.show}
-                     onHide={this.handleClose}
+                     onHide={this.getAllPatterns}
               bsSize="large">
                   <Modal.Header closeButton>
                       <Modal.Title>Pattern</Modal.Title>

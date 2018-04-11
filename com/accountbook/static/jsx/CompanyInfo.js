@@ -1,9 +1,9 @@
 import React from 'react';
-import * as Components from './Components';
+import * as Components from 'Components';
 import {NavItem , Button , Modal,Alert} from 'react-bootstrap';
-import Header from './Header';
-import Body from './Body';
-import AjaxUtils from "../../utils/AjaxUtils";
+import Header from 'Header';
+import Body from 'Body';
+import AjaxUtils from "AjaxUtils";
 
 export default class CardCompanyPage extends React.Component {
     constructor(props) {
