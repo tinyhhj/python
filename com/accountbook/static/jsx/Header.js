@@ -30,7 +30,7 @@ export default class Header extends React.Component {
             <Navbar>
                 <Navbar.Header>
                     <Navbar.Brand>
-                        <a href={routes['home']}>AccountBook</a>
+                        {routes && <a href={routes['home']}>AccountBook</a>}
                     </Navbar.Brand>
                     <Navbar.Toggle />
                 </Navbar.Header>

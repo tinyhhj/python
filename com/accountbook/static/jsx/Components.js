@@ -9,6 +9,7 @@ import MessagePattern from 'MessagePattern';
 import Home from 'Home';
 import Index from 'Index';
 import {v4} from 'uuid';
+import Spinner , {spinner} from 'Spinner';
 
 const SideBar = ({children , width}) => {
     return (
@@ -82,5 +83,7 @@ export {SideBar ,
         Index,
         v4,
         Home,
+        Spinner,
+        spinner,
 };
 

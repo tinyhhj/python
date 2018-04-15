@@ -1,8 +1,8 @@
 import axios from 'axios';
+import {spinner as Spinner} from 'Components';
 
 export default class AjaxUtils {
     static _get(url, query , props={}) {
-
         return axios({
             method: 'get',
             url : url+(Object.keys(query).length ? AjaxUtils.qs(query) : "")
@@ -15,34 +15,42 @@ export default class AjaxUtils {
         };
         const property = {...defaultProps ,...props};
 
+        const id = Spinner.forEach(e=>e.show())
+
         if(property.errorHandling) {
-            return AjaxUtils._get(url,data,property).catch(AjaxUtils.errorHandler);
+            return AjaxUtils._get(url,data,property).catch(AjaxUtils.errorHandler).then(res=>{Spinner.forEach(e=>e.hide(id)); return res;});
         } else {
-            return AjaxUtils._get(url,data,property);
+            return AjaxUtils._get(url,data,property).then(res=>{Spinner.forEach(e=>e.hide(id)); return res;});
         }
     }
 
     static post(url , data={} , props={}) {
+        const id = Spinner.forEach(e=>e.show())
         return axios({
             method: 'post',
             url: url,
             data: data
-        }).catch(this.errorHandler);
+        }).catch(this.errorHandler)
+            .then(res=>{Spinner.forEach(e=>e.hide(id)); return res;});
     }
 
     static delete(url , data={} , props={}) {
+        const id = Spinner.forEach(e=>e.show())
         return axios({
             method: 'delete',
             url : url,
             data : data,
-        }).catch(this.errorHandler);
+        }).catch(this.errorHandler)
+            .then(res=>{Spinner.forEach(e=>e.hide(id)); return res;});
     }
     static put(url , data={} , props ={}) {
+        const id = Spinner.forEach(e=>e.show())
         return axios({
             method: 'put',
             url : url,
             data : data,
-        }).catch(this.errorHandler);
+        }).catch(this.errorHandler)
+            .then(res=>{Spinner.forEach(e=>e.hide(id)); return res;});
     }
     static errorHandler(err) {
         console.log('Error occuered! : ' + err);

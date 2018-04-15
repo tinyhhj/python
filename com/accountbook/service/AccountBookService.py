@@ -105,6 +105,8 @@ class AccountBookService:
         results = self.repo.selectQuery(self.query.get_all_card_companies_info , ());
         for pattern in results:
             pattern['modified_date'] = pattern['modified_date'].strftime("%Y/%m/%d %H:%M:%S");
+        for i in range(100000000):
+            i += 1;
         return json.dumps(results);
 
     def createCardCompanies(self):
