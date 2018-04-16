@@ -6,6 +6,7 @@ import re;
 from com.accountbook.log import logger;
 from com.accountbook.config.MessagePatterns import position_info , position_key;
 from com.accountbook.repository.domain import *
+from datetime import datetime;
 '''
 클라이언트 요청에 대한 실질적인 처리를 담당
 '''
@@ -151,6 +152,19 @@ class AccountBookService:
         results = self.repo.selectQuery(self.query.get_all_menus, ());
         if( len(results)):
             return json.dumps(results)
+
+    def getTableContents(self):
+        requestData = self.json_load(request.data);
+        tableName = requestData['tableName'];
+        print( 'tableName : ' + self.query.get_table_contents % tableName );
+        results = self.repo.selectQuery(self.query.get_table_contents % tableName,());
+        for result in results:
+            for k , v in result.items():
+                if(type(v) is datetime):
+                    result[k] = v.strftime("%Y/%m/%d %H:%M:%S");
+        return json.dumps(results);
+
+
 
 
 

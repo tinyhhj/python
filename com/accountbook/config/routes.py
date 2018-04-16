@@ -9,6 +9,7 @@ routes = {
     'message_pattern': web+'/message/pattern',
     'company_info' : web+'/company/info',
 
+    'get_table_contents' : was+'/table/contents',
     'index_login' : was+'/login',
     'index_signup' : was+'/signup',
     'parse_message' : was+'/parse/message',

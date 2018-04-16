@@ -2,6 +2,9 @@ import React from 'react';
 import {NavItem , Button , Modal,Alert} from 'react-bootstrap';
 import {AjaxUtils, Body , Header ,ModalForCreateCardCompany ,ListGroupItemRow}from 'Components';
 
+const modalStyle = {
+    zIndex : 50,
+}
 export default class CardCompanyPage extends React.Component {
     static moduleName="company_info";
 
@@ -188,7 +191,9 @@ export default class CardCompanyPage extends React.Component {
                 </Body>
                 <Modal show={this.state.show}
                        onHide={this.handleClose}
-                       bsSize="large">
+                       bsSize="large"
+                       backdrop={false}
+                       style={modalStyle}>
                   <Modal.Header closeButton>
                       <Modal.Title>Pattern</Modal.Title>
                   </Modal.Header>

@@ -14,26 +14,31 @@ export default class App extends React.Component
             routes : props.routes,
         }
         this.init = this.init.bind(this);
+        this.initContents = {};
     }
 
     componentDidMount() {
        this.init();
     }
-    componentWillMount() {
-        AjaxUtils.get('/api/accountbook/routes').then( res=> {
-            this.setState({routes : res.data});
-        });
-    }
+
     init() {
         const {routes} = this.state;
         if( routes ) {
             AjaxUtils.get(routes['get_home_menus'])
-                .then(res => this.setState({
-                        menus: res.data,
-                        routeList: Object.keys(routes)
-                            .filter(k => k && k !== 'web' && routes[k] !== routes.was && routes[k].startsWith(routes.web))
-                            .sort((a, b) => routes[b].length - routes[a].length),
-                    })
+                .then(res => {
+                    const requests = res.data.map(e => AjaxUtils.post(routes['get_table_contents'] , {tableName: e.Tables_in_accountbook})
+                                                                .then(res => this.initContents[e.Tables_in_accountbook] = res.data));
+                    AjaxUtils.all(...requests)
+                        .then(() => console.log(this.initContents));
+                }
+
+
+                    // this.setState({
+                    //     menus: res.data,
+                    //     routeList: Object.keys(routes)
+                    //         .filter(k => k && k !== 'web' && routes[k] !== routes.was && routes[k].startsWith(routes.web))
+                    //         .sort((a, b) => routes[b].length - routes[a].length),
+                    // })
                 )
         }
     }
@@ -42,7 +47,8 @@ export default class App extends React.Component
         const navItems = menus.map(e => <NavItem key={v4()} href={routes[e.Tables_in_accountbook]} eventKey={v4()}>{e.Tables_in_accountbook.toUpperCase().replace('_', ' ')}</NavItem>)
         const rl = routeList.map(k=>{return <Route key={v4()}
                                                    path={routes[k]}
-                                                   component={Components[k.replace(k[0],k[0].toUpperCase()).replace(/_(\w)/g,c=>{return c.replace('_','').toUpperCase()})]}
+                                                   // component={Components[k.replace(k[0],k[0].toUpperCase()).replace(/_(\w)/g,c=>{return c.replace('_','').toUpperCase()})]}
+
                                                      />})
         console.log(rl);
         return (

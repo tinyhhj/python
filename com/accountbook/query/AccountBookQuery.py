@@ -39,6 +39,8 @@ class AccountBookQuery:
                                         card_company_number= %s
                                     where _id = %s
                                 """
+    get_table_contents = """ select *
+                             from %s"""
     def delete_card_companies_info(self , id_num ):
         prefix =  """ update company_info
                    set use_yn ='N'

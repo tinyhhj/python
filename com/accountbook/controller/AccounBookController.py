@@ -104,4 +104,12 @@ def updateCardCompanies():
         logger.debug('exception occured!' + str(e))
         return redirect("/home", 302)
 
+@app.route(routes['get_table_contents'] , methods=['POST'])
+def getTableContents():
+    try:
+        return AccountBookService.getInstance().getTableContents();
+    except Exception as e:
+        logger.debug('exception occured!' + str(e))
+        return redirect("/home", 302)
+
 

@@ -60,4 +60,8 @@ export default class AjaxUtils {
     static qs(query) {
         return "?" + Object.keys(query).map(key=>"&"+key+"="+query[key]).join("").replace(/&/,"")
     }
+
+    static all(...requests) {
+        return axios.all(requests).catch(AjaxUtils.errorHandler);
+    }
 }
