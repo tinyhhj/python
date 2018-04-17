@@ -2,7 +2,7 @@ from com.accountbook import app;
 from com.accountbook.service.AccountBookService import AccountBookService;
 from com.accountbook.log import logger;
 import json;
-from flask import render_template ,make_response ,redirect
+from flask import render_template ,request ,redirect
 from com.accountbook.repository.AccountBookRepository import AccountBookRepository;
 from com.accountbook.config.routes import routes;
 '''
@@ -104,12 +104,69 @@ def updateCardCompanies():
         logger.debug('exception occured!' + str(e))
         return redirect("/home", 302)
 
-@app.route(routes['get_table_contents'] , methods=['POST'])
+@app.route(routes['get_table_contents'] , methods=['POST' , 'GET' , 'PUT' , 'DELETE'])
 def getTableContents():
     try:
-        return AccountBookService.getInstance().getTableContents();
+        if request.method == 'GET':
+            return AccountBookService.getInstance().getTableContents();
+        elif request.method == 'POST':
+            return AccountBookService.getInstance().createTableContents();
+        elif request.method == 'PUT':
+            return None;
+        else:
+            return AccountBookService.getInstance().deleteTableContents();
     except Exception as e:
         logger.debug('exception occured!' + str(e))
         return redirect("/home", 302)
+@app.route(routes['admin'] , methods=['GET'])
+def admin():
+    return index();
+
+@app.route(routes['category'] , methods=['GET'])
+def category():
+    return index();
+
+@app.route(routes['deduct_category'] , methods=['GET'])
+def deductCategory():
+    return index();
+
+@app.route(routes['income_category'] , methods=['GET'])
+def incomeCategory():
+    return index();
+
+@app.route(routes['outcome_category'] , methods=['GET'])
+def outcomeCategory():
+    return index();
+
+@app.route(routes['unknown_message_pattern'] , methods=['GET'])
+def unknownMessagePattern():
+    return index();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

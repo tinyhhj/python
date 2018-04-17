@@ -41,6 +41,28 @@ class AccountBookQuery:
                                 """
     get_table_contents = """ select *
                              from %s"""
+    def create_table_contents(self , col_num):
+        qs = """insert into %s (""";
+        for i in range(col_num):
+            qs += "%s, ";
+        qs = qs[:-2]+") values(";
+        for i in range(col_num):
+            qs += "'%s', ";
+        return qs[:-2]+")";
+
+    def delete_table_contents(self , col_num):
+        qs = """delete from %s where _id in ("""
+        for i in range(col_num):
+            qs += "%s, ";
+        return qs[:-2]+")";
+    def update_table_contents(self , col_num):
+        qs = """update %s set """;
+        for i in range(col_num):
+            qs += " %s = '%s', "
+        qs = qs[:-2]+ " where _id = %s";
+        return qs;
+
+
     def delete_card_companies_info(self , id_num ):
         prefix =  """ update company_info
                    set use_yn ='N'

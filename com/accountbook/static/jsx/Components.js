@@ -1,5 +1,5 @@
 import React from 'react';
-import {ListGroupItem ,Button , Checkbox , NavItem} from 'react-bootstrap';
+import {ListGroupItem ,Button , Checkbox , NavItem , Modal} from 'react-bootstrap';
 import AjaxUtils from 'AjaxUtils';
 import FieldGroup from 'FieldGroup';
 import Body from 'Body';
@@ -10,6 +10,7 @@ import Home from 'Home';
 import Index from 'Index';
 import {v4} from 'uuid';
 import Spinner , {spinner} from 'Spinner';
+import Contents from 'Contents';
 
 const SideBar = ({children , width}) => {
     return (
@@ -27,7 +28,7 @@ const MainContents = ({children , marginLeft}) => {
     );
 }
 
-const ListGroupItemRow = ({num_col , col_contents ,header, checkRef , checked, rowClick,handleSelectedItem,itemkey, ...props}) => {
+const ListGroupItemRow = ({num_col , col_contents ,header, checkRef , checked, rowClick,updateItem, ...props}) => {
     const children = [];
     for(let i = 0 ; i < num_col ; i++) {
         children.push(<div key={`${i}`} style={{marginTop:"10px", float:"left", width:parseInt(90/num_col)+"%"}}>{col_contents[i]}</div>);
@@ -35,9 +36,9 @@ const ListGroupItemRow = ({num_col , col_contents ,header, checkRef , checked, r
 
     return (
         <ListGroupItem {...props } onClick={rowClick} style={{marginTop:"5px"}}>
-            {header ? <div style={{float:"left" , width:"20px"}}>&nbsp;</div> : <Checkbox inputRef={checkRef} checked={checked} style={{ float: "left"}} />}
+            {header ? <div style={{float:"left" , width:"20px"}}>&nbsp;</div> : <Checkbox inputRef={checkRef} defaultChecked={checked} style={{ float: "left"}} />}
             {children}
-            {!header && <i className="material-icons" style={{marginTop:"10px", float:"right"}} onClick={e=>{e.stopPropagation();handleSelectedItem(itemkey);}}>mode_edit</i>}
+            {!header && <i className="material-icons" style={{marginTop:"10px", float:"right"}} onClick={e=>{e.stopPropagation();updateItem();}}>mode_edit</i>}
             <div style={{clear:"both"}}></div>
         </ListGroupItem>
     )
@@ -85,5 +86,9 @@ export {SideBar ,
         Home,
         Spinner,
         spinner,
+        Contents,
+        Modal,
+        Button,
+        FieldGroup,
 };
 

@@ -20,7 +20,7 @@ class Repository:
         self.db_database = db_database;
         self.db_source = MySQL();
 
-    def selectQuery(self , query , args):
+    def selectQuery(self , query , args , **kwargs):
         conn = self.db_source.connect();
         cursor = conn.cursor();
         cursor.execute( query , args);
@@ -28,6 +28,8 @@ class Repository:
         #columns 컬럼명을 리스트로 생성
         columns = [d[0] for d in cursor.description ]
         # 결과 키 값 쌍을 results에 추가
+        if('header' in kwargs):
+            results.append(dict(zip(columns , columns)))
         for row in cursor:
             results.append(dict(zip(columns , row)))
         cursor.close();

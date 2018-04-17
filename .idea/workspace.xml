@@ -2,15 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c4cf1006-658f-4ce9-91ba-e8e5b352bba2" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/com/accountbook/static/jsx/Contents.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/com/accountbook/config/AccountBookConfig.py" afterPath="$PROJECT_DIR$/com/accountbook/config/AccountBookConfig.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/com/accountbook/config/routes.py" afterPath="$PROJECT_DIR$/com/accountbook/config/routes.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/com/accountbook/controller/AccounBookController.py" afterPath="$PROJECT_DIR$/com/accountbook/controller/AccounBookController.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/com/accountbook/query/AccountBookQuery.py" afterPath="$PROJECT_DIR$/com/accountbook/query/AccountBookQuery.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/com/accountbook/repository/Repository.py" afterPath="$PROJECT_DIR$/com/accountbook/repository/Repository.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/com/accountbook/service/AccountBookService.py" afterPath="$PROJECT_DIR$/com/accountbook/service/AccountBookService.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/com/accountbook/static/js/bundle.js" afterPath="$PROJECT_DIR$/com/accountbook/static/js/bundle.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/com/accountbook/static/jsx/App.js" afterPath="$PROJECT_DIR$/com/accountbook/static/jsx/App.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/com/accountbook/static/jsx/CompanyInfo.js" afterPath="$PROJECT_DIR$/com/accountbook/static/jsx/CompanyInfo.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/com/accountbook/static/jsx/Body.js" afterPath="$PROJECT_DIR$/com/accountbook/static/jsx/Body.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/com/accountbook/static/jsx/Components.js" afterPath="$PROJECT_DIR$/com/accountbook/static/jsx/Components.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/com/accountbook/static/jsx/FieldGroup.js" afterPath="$PROJECT_DIR$/com/accountbook/static/jsx/FieldGroup.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/com/accountbook/static/jsx/Spinner.js" afterPath="$PROJECT_DIR$/com/accountbook/static/jsx/Spinner.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/com/accountbook/utils/AjaxUtils.js" afterPath="$PROJECT_DIR$/com/accountbook/utils/AjaxUtils.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -25,7 +32,7 @@
     <SUITE FILE_PATH="coverage/untitled$QueryBuilder.coverage" NAME="QueryBuilder Coverage Results" MODIFIED="1519648384196" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/com/accountbook/query" />
     <SUITE FILE_PATH="coverage/untitled$AccountBookRepository__1_.coverage" NAME="AccountBookRepository (1) Coverage Results" MODIFIED="1519654660168" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/com/accountbook/repository" />
     <SUITE FILE_PATH="coverage/untitled$domain.coverage" NAME="domain Coverage Results" MODIFIED="1519655553172" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/com/accountbook/repository" />
-    <SUITE FILE_PATH="coverage/untitled$Application__1_.coverage" NAME="Application (1) Coverage Results" MODIFIED="1523898831478" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/com/accountbook" />
+    <SUITE FILE_PATH="coverage/untitled$Application__1_.coverage" NAME="Application (1) Coverage Results" MODIFIED="1523994904071" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/com/accountbook" />
     <SUITE FILE_PATH="coverage/untitled$Application.coverage" NAME="Application Coverage Results" MODIFIED="1519578273395" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/com/AccountBook" />
   </component>
   <component name="FavoritesManager">
@@ -33,11 +40,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="CompanyInfo.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/com/accountbook/static/jsx/CompanyInfo.js">
+      <file leaf-file-name="Components.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/com/accountbook/static/jsx/Components.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="598">
-              <caret line="190" column="23" lean-forward="true" selection-start-line="190" selection-start-column="23" selection-end-line="190" selection-end-column="23" />
+            <state relative-caret-position="210">
+              <caret line="30" column="6" lean-forward="false" selection-start-line="30" selection-start-column="6" selection-end-line="30" selection-end-column="6" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -45,14 +52,34 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AjaxUtils.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/com/accountbook/utils/AjaxUtils.js">
+      <file leaf-file-name="Body.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/com/accountbook/static/jsx/Body.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="461">
-              <caret line="63" column="26" lean-forward="true" selection-start-line="63" selection-start-column="26" selection-end-line="63" selection-end-column="26" />
+            <state relative-caret-position="195">
+              <caret line="14" column="18" lean-forward="false" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Contents.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/com/accountbook/static/jsx/Contents.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1026">
+              <caret line="46" column="31" lean-forward="false" selection-start-line="46" selection-start-column="21" selection-end-line="46" selection-end-column="31" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FieldGroup.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/com/accountbook/static/jsx/FieldGroup.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="23" column="14" lean-forward="false" selection-start-line="23" selection-start-column="14" selection-end-line="23" selection-end-column="14" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -60,8 +87,8 @@
       <file leaf-file-name="App.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/com/accountbook/static/jsx/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="173">
-              <caret line="29" column="130" lean-forward="false" selection-start-line="29" selection-start-column="130" selection-end-line="29" selection-end-column="130" />
+            <state relative-caret-position="199">
+              <caret line="41" column="9" lean-forward="false" selection-start-line="41" selection-start-column="9" selection-end-line="41" selection-end-column="9" />
               <folding>
                 <element signature="e#0#74#0" expanded="true" />
               </folding>
@@ -69,11 +96,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AccounBookController.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/com/accountbook/controller/AccounBookController.py">
+      <file leaf-file-name="AjaxUtils.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/com/accountbook/utils/AjaxUtils.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="477">
-              <caret line="109" column="64" lean-forward="false" selection-start-line="109" selection-start-column="48" selection-end-line="109" selection-end-column="64" />
+            <state relative-caret-position="315">
+              <caret line="22" column="40" lean-forward="false" selection-start-line="22" selection-start-column="40" selection-end-line="22" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -82,8 +109,8 @@
       <file leaf-file-name="AccountBookService.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/com/accountbook/service/AccountBookService.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="321">
-              <caret line="163" column="29" lean-forward="false" selection-start-line="163" selection-start-column="29" selection-end-line="163" selection-end-column="29" />
+            <state relative-caret-position="1038">
+              <caret line="181" column="55" lean-forward="false" selection-start-line="181" selection-start-column="55" selection-end-line="181" selection-end-column="55" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -91,12 +118,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AccountBookRepository.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/com/accountbook/repository/AccountBookRepository.py">
+      <file leaf-file-name="AccountBookQuery.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/com/accountbook/query/AccountBookQuery.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="15" lean-forward="false" selection-start-line="16" selection-start-column="15" selection-end-line="16" selection-end-column="15" />
-              <folding />
+            <state relative-caret-position="302">
+              <caret line="57" column="29" lean-forward="false" selection-start-line="57" selection-start-column="8" selection-end-line="57" selection-end-column="29" />
+              <folding>
+                <marker date="1523993950000" expanded="true" signature="82:386" ph="select B.car... message_pattern" />
+                <marker date="1523993950000" expanded="true" signature="477:562" ph="select * fro... admin" />
+                <marker date="1523993950000" expanded="true" signature="477:564" ph="select * fro... admin" />
+                <marker date="1523993950000" expanded="true" signature="611:695" ph="insert into admin... " />
+                <marker date="1523993950000" expanded="true" signature="755:865" ph="select * fro... comapny_info" />
+                <marker date="1523993950000" expanded="true" signature="906:1023" ph="insert into company_info... " />
+                <marker date="1523993950000" expanded="true" signature="1099:1308" ph="update compa... " />
+                <marker date="1523993950000" expanded="true" signature="1383:1575" ph="select * fro... company_info" />
+                <marker date="1523993950000" expanded="true" signature="1615:1696" ph="update compa... " />
+                <marker date="1523993950000" expanded="true" signature="1615:1807" ph="update compa... " />
+                <marker date="1523993950000" expanded="true" signature="1615:1813" ph="update compa... " />
+                <marker date="1523993950000" expanded="true" signature="1879:1924" ph="select * fro... " />
+                <marker date="1523993950000" expanded="true" signature="1991:2005" ph="insert into " />
+                <marker date="1523993950000" expanded="true" signature="1991:2007" ph="insert into " />
+                <marker date="1523993950000" expanded="true" signature="1991:2656" ph="insert into " />
+                <marker date="1523993950000" expanded="true" signature="2258:2287" ph="delete from " />
+                <marker date="1523993950000" expanded="true" signature="2662:2750" ph="update compa... " />
+                <marker date="1523993950000" expanded="true" signature="2668:2681" ph="delete from " />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -104,44 +150,21 @@
       <file leaf-file-name="Repository.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/com/accountbook/repository/Repository.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="379">
-              <caret line="34" column="23" lean-forward="false" selection-start-line="34" selection-start-column="23" selection-end-line="34" selection-end-column="23" />
+            <state relative-caret-position="312">
+              <caret line="31" column="53" lean-forward="false" selection-start-line="31" selection-start-column="53" selection-end-line="31" selection-end-column="53" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AccountBookQuery.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/com/accountbook/query/AccountBookQuery.py">
+      <file leaf-file-name="AccounBookController.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/com/accountbook/controller/AccounBookController.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="297">
-              <caret line="41" column="12" lean-forward="false" selection-start-line="41" selection-start-column="12" selection-end-line="41" selection-end-column="12" />
+            <state relative-caret-position="445">
+              <caret line="116" column="58" lean-forward="false" selection-start-line="116" selection-start-column="58" selection-end-line="116" selection-end-column="58" />
               <folding>
-                <marker date="1523896906000" expanded="true" signature="82:386" ph="select B.car... message_pattern" />
-                <marker date="1523896906000" expanded="true" signature="477:562" ph="select * fro... admin" />
-                <marker date="1523896906000" expanded="true" signature="477:564" ph="select * fro... admin" />
-                <marker date="1523896906000" expanded="true" signature="611:695" ph="insert into admin... " />
-                <marker date="1523896906000" expanded="true" signature="755:865" ph="select * fro... comapny_info" />
-                <marker date="1523896906000" expanded="true" signature="906:1023" ph="insert into company_info... " />
-                <marker date="1523896906000" expanded="true" signature="1099:1308" ph="update compa... " />
-                <marker date="1523896906000" expanded="true" signature="1383:1575" ph="select * fro... company_info" />
-                <marker date="1523896906000" expanded="true" signature="1615:1696" ph="update compa... " />
-                <marker date="1523896906000" expanded="true" signature="1615:1807" ph="update compa... " />
-                <marker date="1523896906000" expanded="true" signature="1615:1813" ph="update compa... " />
-                <marker date="1523896906000" expanded="true" signature="1879:1924" ph="select * fro... " />
-                <marker date="1523896906000" expanded="true" signature="2002:2090" ph="update compa... " />
-                <marker date="1523896906000" expanded="true" signature="2008:2021" ph="delete from " />
+                <element signature="e#0#32#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="routes.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/com/accountbook/config/routes.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="23" lean-forward="false" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="23" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -161,36 +184,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>listAll</find>
-      <find>eventKey</find>
-      <find>activeKey</find>
-      <find>NavItem</find>
-      <find>/patterns</find>
-      <find>&quot;</find>
-      <find>getAllPatterns</find>
-      <find>handleShow</find>
-      <find>selectedId</find>
-      <find>ListGroupItemRow</find>
-      <find>CardCompanyPage</find>
-      <find>Co</find>
-      <find>Header</find>
-      <find>headerProps</find>
-      <find>headerChildren</find>
-      <find>Alert</find>
-      <find>A</find>
-      <find>Body</find>
-      <find>Components</find>
-      <find>deleteList</find>
-      <find>AjaxUtils</find>
-      <find>Spinner</find>
-      <find>console</find>
-      <find>routes</find>
-      <find>spinner</find>
+      <find>inputCheck</find>
       <find>for</find>
-      <find>handleClose</find>
-      <find>json_load</find>
-      <find>date</find>
-      <find>dumps</find>
+      <find>routes</find>
+      <find>get_table</find>
+      <find>handleDeleteItem</find>
+      <find>...</find>
+      <find>notFoundMessage</find>
+      <find>bodyProps</find>
+      <find>makeSideBarContentList</find>
+      <find>inputcheck</find>
+      <find>modalBody</find>
+      <find>cardCompanyName</find>
+      <find>FieldGroup</find>
+      <find>inputValue</find>
+      <find>handleInputChange</find>
+      <find>create</find>
+      <find>handleOpenDialog</find>
+      <find>delete</find>
+      <find>delete_table_contents</find>
+      <find>modalInput</find>
+      <find>makeModalContents</find>
+      <find>handleUpdateButton</find>
+      <find>iter</find>
+      <find>header</find>
+      <find>_id</find>
+      <find>dataIndexes</find>
+      <find>type</find>
+      <find>handleCreateButton</find>
+      <find>tableModel</find>
+      <find>errorHandler</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -202,8 +225,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/com/accountbook/log/logger.py" />
-        <option value="$PROJECT_DIR$/com/accountbook/log/my.log" />
         <option value="$PROJECT_DIR$/com/accountbook/log/__init__.py" />
         <option value="$PROJECT_DIR$/com/accountbook/exception/__init__.py" />
         <option value="$PROJECT_DIR$/com/accountbook/query/QueryBuilder.py" />
@@ -219,7 +240,6 @@
         <option value="$PROJECT_DIR$/com/accountbook/static/jsx/InputForm.js" />
         <option value="$PROJECT_DIR$/com/accountbook/static/jsx/Example.jsx.js" />
         <option value="$PROJECT_DIR$/com/accountbook/static/jsx/Example.jsx" />
-        <option value="$PROJECT_DIR$/com/accountbook/config/AccountBookConfig.py" />
         <option value="$PROJECT_DIR$/com/accountbook/static/jsx/index.js" />
         <option value="$PROJECT_DIR$/com/accountbook/static/jsx/SideBar.js" />
         <option value="$PROJECT_DIR$/webpack.config.js" />
@@ -227,13 +247,11 @@
         <option value="$PROJECT_DIR$/com/accountbook/static/jsx/Patterns.js" />
         <option value="$PROJECT_DIR$/com/accountbook/log/logging" />
         <option value="$PROJECT_DIR$/com/accountbook/static/jsx/CardCompany.js" />
-        <option value="$PROJECT_DIR$/com/accountbook/repository/Repository.py" />
         <option value="$PROJECT_DIR$/com/accountbook/static/jsx/InputForm.jsx" />
         <option value="$PROJECT_DIR$/com/accountbook/config/MessagePatterns.py" />
         <option value="$PROJECT_DIR$/com/accountbook/static/jsx/fieldGroup.js" />
         <option value="$PROJECT_DIR$/com/accountbook/static/jsx/PatternsPage.js" />
         <option value="$PROJECT_DIR$/com/accountbook/static/js/bundle.js" />
-        <option value="$PROJECT_DIR$/com/accountbook/static/jsx/Body.js" />
         <option value="$PROJECT_DIR$/com/accountbook/static/jsx/CardCompanyPage.js" />
         <option value="$PROJECT_DIR$/com/accountbook/static/jsx/MainPortal.js" />
         <option value="$PROJECT_DIR$/com/accountbook/static/jsx/Home.js" />
@@ -242,17 +260,22 @@
         <option value="$PROJECT_DIR$/com/accountbook/static/jsx/configuration.js" />
         <option value="$PROJECT_DIR$/com/accountbook/static/jsx/Configuration.js" />
         <option value="$PROJECT_DIR$/com/accountbook/templates/index.html" />
-        <option value="$PROJECT_DIR$/com/accountbook/static/jsx/Components.js" />
         <option value="$PROJECT_DIR$/com/accountbook/static/jsx/Header.js" />
         <option value="$PROJECT_DIR$/com/accountbook/static/jsx/Entry.js" />
-        <option value="$PROJECT_DIR$/com/accountbook/static/jsx/Spinner.js" />
+        <option value="$PROJECT_DIR$/com/accountbook/config/AccountBookConfig.py" />
         <option value="$PROJECT_DIR$/com/accountbook/static/jsx/CompanyInfo.js" />
+        <option value="$PROJECT_DIR$/com/accountbook/static/jsx/Spinner.js" />
+        <option value="$PROJECT_DIR$/com/accountbook/repository/Repository.py" />
         <option value="$PROJECT_DIR$/com/accountbook/config/routes.py" />
-        <option value="$PROJECT_DIR$/com/accountbook/utils/AjaxUtils.js" />
+        <option value="$PROJECT_DIR$/com/accountbook/static/jsx/App.js" />
+        <option value="$PROJECT_DIR$/com/accountbook/static/jsx/Body.js" />
+        <option value="$PROJECT_DIR$/com/accountbook/static/jsx/FieldGroup.js" />
         <option value="$PROJECT_DIR$/com/accountbook/controller/AccounBookController.py" />
+        <option value="$PROJECT_DIR$/com/accountbook/static/jsx/Components.js" />
         <option value="$PROJECT_DIR$/com/accountbook/query/AccountBookQuery.py" />
         <option value="$PROJECT_DIR$/com/accountbook/service/AccountBookService.py" />
-        <option value="$PROJECT_DIR$/com/accountbook/static/jsx/App.js" />
+        <option value="$PROJECT_DIR$/com/accountbook/static/jsx/Contents.js" />
+        <option value="$PROJECT_DIR$/com/accountbook/utils/AjaxUtils.js" />
       </list>
     </option>
   </component>
@@ -266,10 +289,10 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-12" />
-    <option name="y" value="25" />
+    <option name="x" value="17" />
+    <option name="y" value="23" />
     <option name="width" value="1440" />
-    <option name="height" value="815" />
+    <option name="height" value="817" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -558,18 +581,19 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="815" extended-state="6" />
+    <frame x="8" y="23" width="1440" height="817" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25277779" sideWeight="0.49529412" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3257066" sideWeight="0.50277776" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32974428" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20995963" sideWeight="0.49722221" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20939597" sideWeight="0.49722221" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25277779" sideWeight="0.49529412" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32839838" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24930556" sideWeight="0.5047059" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39973083" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -579,7 +603,6 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32839838" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -591,18 +614,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <option name="time" value="2" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/node_modules/react-bootstrap/es/ControlLabel.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="609">
-          <caret line="71" column="15" lean-forward="false" selection-start-line="71" selection-start-column="15" selection-end-line="71" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/react-bootstrap/es/utils/bootstrapUtils.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="471">
@@ -985,17 +1001,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/react-bootstrap/es/ListGroupItem.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="111" column="15" lean-forward="false" selection-start-line="111" selection-start-column="15" selection-end-line="111" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/react-bootstrap/es/FormControl.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
           <caret line="104" column="15" lean-forward="false" selection-start-line="104" selection-start-column="15" selection-end-line="104" selection-end-column="15" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1015,26 +1025,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/react-bootstrap/es/Checkbox.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="447">
-          <caret line="115" column="15" lean-forward="false" selection-start-line="115" selection-start-column="15" selection-end-line="115" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/react-bootstrap/es/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="84" column="15" lean-forward="false" selection-start-line="84" selection-start-column="8" selection-end-line="84" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/uuid/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" column="8" lean-forward="false" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="8" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1050,27 +1045,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="334">
           <caret line="4288" column="0" lean-forward="false" selection-start-line="4288" selection-start-column="0" selection-end-line="4288" selection-end-column="0" />
-          <folding>
-            <marker date="1523899215000" expanded="true" signature="4298165:4303611" ph="{...}" />
-            <marker date="1523899215000" expanded="true" signature="4303581:4303598" ph="{...}" />
-            <marker date="1523899215000" expanded="true" signature="4303591:4303596" ph="/*...*/" />
-            <marker date="1523899215000" expanded="true" signature="4303601:4303609" ph="/*...*/" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/com/accountbook/config/AccountBookConfig.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="24" column="19" lean-forward="true" selection-start-line="24" selection-start-column="19" selection-end-line="24" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/com/accountbook/config/MessagePatterns.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="23" column="11" lean-forward="true" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="11" />
           <folding />
         </state>
       </provider>
@@ -1093,49 +1067,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/com/accountbook/static/jsx/Spinner.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="70" column="38" lean-forward="false" selection-start-line="70" selection-start-column="38" selection-end-line="70" selection-end-column="38" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-            <marker date="1523817258000" expanded="true" signature="2308:2339" ph="..." />
-            <marker date="1523817258000" expanded="true" signature="2339:2364" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/com/accountbook/static/jsx/Header.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="294">
           <caret line="32" column="31" lean-forward="false" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="31" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/com/accountbook/static/jsx/FieldGroup.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="22" column="18" lean-forward="true" selection-start-line="22" selection-start-column="18" selection-end-line="22" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/com/accountbook/static/jsx/Configuration.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="11" lean-forward="false" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/com/accountbook/static/jsx/Components.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-172">
-          <caret line="46" column="5" lean-forward="false" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#26#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1165,76 +1101,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/com/accountbook/static/jsx/Body.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="13" column="14" lean-forward="false" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/com/accountbook/utils/AjaxUtils.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="461">
-          <caret line="63" column="26" lean-forward="true" selection-start-line="63" selection-start-column="26" selection-end-line="63" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/com/accountbook/config/routes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="23" lean-forward="false" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/com/accountbook/controller/AccounBookController.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="477">
-          <caret line="109" column="64" lean-forward="false" selection-start-line="109" selection-start-column="48" selection-end-line="109" selection-end-column="64" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/com/accountbook/repository/AccountBookRepository.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="16" column="15" lean-forward="false" selection-start-line="16" selection-start-column="15" selection-end-line="16" selection-end-column="15" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/com/accountbook/repository/Repository.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="379">
-          <caret line="34" column="23" lean-forward="false" selection-start-line="34" selection-start-column="23" selection-end-line="34" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/com/accountbook/query/AccountBookQuery.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="41" column="12" lean-forward="false" selection-start-line="41" selection-start-column="12" selection-end-line="41" selection-end-column="12" />
-          <folding>
-            <marker date="1523896906000" expanded="true" signature="82:386" ph="select B.car... message_pattern" />
-            <marker date="1523896906000" expanded="true" signature="477:562" ph="select * fro... admin" />
-            <marker date="1523896906000" expanded="true" signature="477:564" ph="select * fro... admin" />
-            <marker date="1523896906000" expanded="true" signature="611:695" ph="insert into admin... " />
-            <marker date="1523896906000" expanded="true" signature="755:865" ph="select * fro... comapny_info" />
-            <marker date="1523896906000" expanded="true" signature="906:1023" ph="insert into company_info... " />
-            <marker date="1523896906000" expanded="true" signature="1099:1308" ph="update compa... " />
-            <marker date="1523896906000" expanded="true" signature="1383:1575" ph="select * fro... company_info" />
-            <marker date="1523896906000" expanded="true" signature="1615:1696" ph="update compa... " />
-            <marker date="1523896906000" expanded="true" signature="1615:1807" ph="update compa... " />
-            <marker date="1523896906000" expanded="true" signature="1615:1813" ph="update compa... " />
-            <marker date="1523896906000" expanded="true" signature="1879:1924" ph="select * fro... " />
-            <marker date="1523896906000" expanded="true" signature="2002:2090" ph="update compa... " />
-            <marker date="1523896906000" expanded="true" signature="2008:2021" ph="delete from " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1246,33 +1117,188 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/com/accountbook/service/AccountBookService.py">
+    <entry file="file://$PROJECT_DIR$/com/accountbook/config/MessagePatterns.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="321">
-          <caret line="163" column="29" lean-forward="false" selection-start-line="163" selection-start-column="29" selection-end-line="163" selection-end-column="29" />
+        <state relative-caret-position="-348">
+          <caret line="5" column="17" lean-forward="true" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/react-bootstrap/es/ListGroupItem.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="478">
+          <caret line="111" column="15" lean-forward="false" selection-start-line="111" selection-start-column="15" selection-end-line="111" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/accountbook/config/AccountBookConfig.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="7" column="15" lean-forward="false" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/accountbook/static/jsx/Spinner.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="908">
+          <caret line="68" column="38" lean-forward="false" selection-start-line="68" selection-start-column="38" selection-end-line="68" selection-end-column="38" />
+          <folding>
+            <marker date="1523974640000" expanded="true" signature="2161:2192" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/react-bootstrap/es/Checkbox.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="471">
+          <caret line="115" column="15" lean-forward="false" selection-start-line="115" selection-start-column="15" selection-end-line="115" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/react-bootstrap/es/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="20" lean-forward="false" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/accountbook/static/jsx/Configuration.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="11" lean-forward="false" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/accountbook/static/jsx/CompanyInfo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="42" column="41" lean-forward="false" selection-start-line="42" selection-start-column="35" selection-end-line="42" selection-end-column="41" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/com/accountbook/config/routes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="20" column="26" lean-forward="false" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/accountbook/static/jsx/Components.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="30" column="6" lean-forward="false" selection-start-line="30" selection-start-column="6" selection-end-line="30" selection-end-column="6" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/accountbook/controller/AccounBookController.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="445">
+          <caret line="116" column="58" lean-forward="false" selection-start-line="116" selection-start-column="58" selection-end-line="116" selection-end-column="58" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/accountbook/static/jsx/Body.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="14" column="18" lean-forward="false" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/com/accountbook/static/jsx/App.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="29" column="130" lean-forward="false" selection-start-line="29" selection-start-column="130" selection-end-line="29" selection-end-column="130" />
+        <state relative-caret-position="199">
+          <caret line="41" column="9" lean-forward="false" selection-start-line="41" selection-start-column="9" selection-end-line="41" selection-end-column="9" />
           <folding>
             <element signature="e#0#74#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/com/accountbook/static/jsx/CompanyInfo.js">
+    <entry file="file://$PROJECT_DIR$/com/accountbook/query/AccountBookQuery.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="598">
-          <caret line="190" column="23" lean-forward="true" selection-start-line="190" selection-start-column="23" selection-end-line="190" selection-end-column="23" />
+        <state relative-caret-position="302">
+          <caret line="57" column="29" lean-forward="false" selection-start-line="57" selection-start-column="8" selection-end-line="57" selection-end-column="29" />
+          <folding>
+            <marker date="1523993950000" expanded="true" signature="82:386" ph="select B.car... message_pattern" />
+            <marker date="1523993950000" expanded="true" signature="477:562" ph="select * fro... admin" />
+            <marker date="1523993950000" expanded="true" signature="477:564" ph="select * fro... admin" />
+            <marker date="1523993950000" expanded="true" signature="611:695" ph="insert into admin... " />
+            <marker date="1523993950000" expanded="true" signature="755:865" ph="select * fro... comapny_info" />
+            <marker date="1523993950000" expanded="true" signature="906:1023" ph="insert into company_info... " />
+            <marker date="1523993950000" expanded="true" signature="1099:1308" ph="update compa... " />
+            <marker date="1523993950000" expanded="true" signature="1383:1575" ph="select * fro... company_info" />
+            <marker date="1523993950000" expanded="true" signature="1615:1696" ph="update compa... " />
+            <marker date="1523993950000" expanded="true" signature="1615:1807" ph="update compa... " />
+            <marker date="1523993950000" expanded="true" signature="1615:1813" ph="update compa... " />
+            <marker date="1523993950000" expanded="true" signature="1879:1924" ph="select * fro... " />
+            <marker date="1523993950000" expanded="true" signature="1991:2005" ph="insert into " />
+            <marker date="1523993950000" expanded="true" signature="1991:2007" ph="insert into " />
+            <marker date="1523993950000" expanded="true" signature="1991:2656" ph="insert into " />
+            <marker date="1523993950000" expanded="true" signature="2258:2287" ph="delete from " />
+            <marker date="1523993950000" expanded="true" signature="2662:2750" ph="update compa... " />
+            <marker date="1523993950000" expanded="true" signature="2668:2681" ph="delete from " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/accountbook/repository/Repository.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="31" column="53" lean-forward="false" selection-start-line="31" selection-start-column="53" selection-end-line="31" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/accountbook/service/AccountBookService.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1038">
+          <caret line="181" column="55" lean-forward="false" selection-start-line="181" selection-start-column="55" selection-end-line="181" selection-end-column="55" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/accountbook/static/jsx/FieldGroup.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="23" column="14" lean-forward="false" selection-start-line="23" selection-start-column="14" selection-end-line="23" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/accountbook/static/jsx/Contents.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1026">
+          <caret line="46" column="31" lean-forward="false" selection-start-line="46" selection-start-column="21" selection-end-line="46" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/accountbook/utils/AjaxUtils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="22" column="40" lean-forward="false" selection-start-line="22" selection-start-column="40" selection-end-line="22" selection-end-column="40" />
+          <folding />
         </state>
       </provider>
     </entry>

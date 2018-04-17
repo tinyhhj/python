@@ -5,8 +5,9 @@ import json;
 import re;
 from com.accountbook.log import logger;
 from com.accountbook.config.MessagePatterns import position_info , position_key;
-from com.accountbook.repository.domain import *
+from com.accountbook.config.AccountBookConfig import configuration;
 from datetime import datetime;
+from functools import reduce;
 '''
 클라이언트 요청에 대한 실질적인 처리를 담당
 '''
@@ -154,15 +155,48 @@ class AccountBookService:
             return json.dumps(results)
 
     def getTableContents(self):
-        requestData = self.json_load(request.data);
-        tableName = requestData['tableName'];
-        print( 'tableName : ' + self.query.get_table_contents % tableName );
-        results = self.repo.selectQuery(self.query.get_table_contents % tableName,());
+        # requestData = self.json_load(request.data);
+        tableName = request.args['tableName'];
+        query = self.query.get_table_contents;
+        if( tableName in configuration['useYnTable']):
+            query += " where use_yn = 'Y' ";
+
+        results = self.repo.selectQuery(query % tableName,() , header=None);
         for result in results:
             for k , v in result.items():
                 if(type(v) is datetime):
                     result[k] = v.strftime("%Y/%m/%d %H:%M:%S");
         return json.dumps(results);
+
+    def createTableContents(self):
+        requestData = self.json_load(request.data);
+        print(requestData);
+        tableName = requestData.pop('tableName');
+        _id = '_id' in requestData and requestData.pop('_id');
+        'modified_date' in requestData and requestData.pop('modified_date');
+        'use_yn' in requestData and requestData.pop('use_yn');
+        'modalButton' in requestData and requestData.pop('modalButton');
+        print(tableName , _id)
+
+        if _id :
+            qs = self.query.update_table_contents(self,len(requestData));
+            self.repo.executeQuery(qs % ((tableName,)+reduce(lambda x,y:x+y ,[(k,v) for k,v in requestData.items()]) +(_id, )),())
+            print(qs % ((tableName,)+reduce(lambda x,y:x+y ,[(k,v) for k,v in requestData.items()]) +(_id, )))
+        else:
+            qs = self.query.create_table_contents(self,len(requestData));
+            self.repo.executeQuery(qs % ((tableName,) + tuple(requestData.keys()) + tuple(requestData.values())), ())
+            print(qs % ((tableName,)+ tuple(requestData.keys()) + tuple(requestData.values())))
+        return json.dumps(self.make_response());
+    def deleteTableContents(self):
+        requestData = self.json_load(request.data);
+        tableName = requestData.pop('tableName');
+        qs = self.query.delete_table_contents(self, len(requestData['_id']));
+        print(qs);
+
+
+        self.repo.executeQuery(qs % ((tableName,) + tuple(requestData.pop('_id'))), ())
+        return json.dumps(self.make_response());
+
 
 
 

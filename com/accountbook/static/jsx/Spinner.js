@@ -39,8 +39,6 @@ export default class Spinner extends React.Component {
         const nRequestId = requestId.slice();
 
         nRequestId.push(id);
-        console.log('this : '+ this);
-        console.log('id : ' + id + ' requestId : '+ nRequestId);
 
         this.setState({ requestId : nRequestId , show : true})
     }
@@ -69,7 +67,6 @@ export default class Spinner extends React.Component {
                                     }}>
                     </div>;
         componentHandler.upgradeDom();
-        console.log('display : ' +display);
         return (
             <div style={{...style ,display : display}}>
                 <div >

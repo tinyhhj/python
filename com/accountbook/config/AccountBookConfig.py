@@ -4,6 +4,10 @@ from com.accountbook.repository.AccountBookRepository import AccountBookReposito
 '''
 어플리케이션의 설정 담당
 '''
+configuration = {
+    'useYnTable' : ['message_pattern' , 'unknown_message_pattern', 'company_info'],
+
+}
 class AppConfig:
     @classmethod
     def setConfig(cls , app):

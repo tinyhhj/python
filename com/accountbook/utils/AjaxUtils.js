@@ -18,7 +18,9 @@ export default class AjaxUtils {
         const id = Spinner.forEach(e=>e.show())
 
         if(property.errorHandling) {
-            return AjaxUtils._get(url,data,property).catch(AjaxUtils.errorHandler).then(res=>{Spinner.forEach(e=>e.hide(id)); return res;});
+            return AjaxUtils._get(url,data,property).catch(err => {
+            Spinner.forEach(e=>e.hide(id));
+            AjaxUtils.errorHandler(err)}).then(res=>{Spinner.forEach(e=>e.hide(id)); return res;});
         } else {
             return AjaxUtils._get(url,data,property).then(res=>{Spinner.forEach(e=>e.hide(id)); return res;});
         }
@@ -30,7 +32,9 @@ export default class AjaxUtils {
             method: 'post',
             url: url,
             data: data
-        }).catch(this.errorHandler)
+        }).catch(err => {
+            Spinner.forEach(e=>e.hide(id));
+            AjaxUtils.errorHandler(err)})
             .then(res=>{Spinner.forEach(e=>e.hide(id)); return res;});
     }
 
@@ -40,7 +44,9 @@ export default class AjaxUtils {
             method: 'delete',
             url : url,
             data : data,
-        }).catch(this.errorHandler)
+        }).catch(err => {
+            Spinner.forEach(e=>e.hide(id));
+            AjaxUtils.errorHandler(err)})
             .then(res=>{Spinner.forEach(e=>e.hide(id)); return res;});
     }
     static put(url , data={} , props ={}) {
@@ -49,7 +55,9 @@ export default class AjaxUtils {
             method: 'put',
             url : url,
             data : data,
-        }).catch(this.errorHandler)
+        }).catch(err => {
+            Spinner.forEach(e=>e.hide(id));
+            AjaxUtils.errorHandler(err)})
             .then(res=>{Spinner.forEach(e=>e.hide(id)); return res;});
     }
     static errorHandler(err) {
@@ -62,6 +70,8 @@ export default class AjaxUtils {
     }
 
     static all(...requests) {
-        return axios.all(requests).catch(AjaxUtils.errorHandler);
+        return axios.all(requests).catch(err => {
+            Spinner.forEach(e=>e.hide(id));
+            AjaxUtils.errorHandler(err)});
     }
 }

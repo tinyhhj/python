@@ -8,8 +8,18 @@ routes = {
     'home': web+'/home',
     'message_pattern': web+'/message/pattern',
     'company_info' : web+'/company/info',
+    'admin' : web+'/admin',
+    'category' : web+'/category',
+    'deduct_category': web+'/deduct/category',
+    'income_category': web+'/income/category',
+    'outcome_category': web+'/outcome/category',
+    'unknown_message_pattern': web+'/unknown/message/pattern',
+                           
 
     'get_table_contents' : was+'/table/contents',
+    'delete_table_contents': was+'/table/contents',
+    'create_table_contents': was+'/table/contents',
+    'update_table_contents': was+'/table/contents',
     'index_login' : was+'/login',
     'index_signup' : was+'/signup',
     'parse_message' : was+'/parse/message',

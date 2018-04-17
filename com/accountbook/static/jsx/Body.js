@@ -7,14 +7,15 @@ export default class Body extends React.Component {
     }
 
     render() {
-        const {sideBarContents} = this.props;
+        const {children , sideBarContents} = this.props;
+        console.log(sideBarContents)
      return(
          <div className="w3-container">
              <SideBar width="25%">
                  {sideBarContents}
              </SideBar>
              <MainContents marginLeft="30%">
-                 {this.props.children}
+                 {children}
              </MainContents>
          </div>
       );
