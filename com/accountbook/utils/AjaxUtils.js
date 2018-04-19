@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {spinner as Spinner} from 'Components';
+import {spinner as Spinner , toast as Toast} from 'Components';
 
 export default class AjaxUtils {
     static _get(url, query , props={}) {
@@ -14,20 +14,27 @@ export default class AjaxUtils {
             errorHandling : true,
         };
         const property = {...defaultProps ,...props};
+        const {message} = props;
+
 
         const id = Spinner.forEach(e=>e.show())
 
         if(property.errorHandling) {
             return AjaxUtils._get(url,data,property).catch(err => {
             Spinner.forEach(e=>e.hide(id));
-            AjaxUtils.errorHandler(err)}).then(res=>{Spinner.forEach(e=>e.hide(id)); return res;});
+            AjaxUtils.errorHandler(err)}).then(res=>{Spinner.forEach(e=>e.hide(id));
+                                                        if( message ) Toast.forEach(t=>t.show('success' , message));
+                                                        return res;});
         } else {
-            return AjaxUtils._get(url,data,property).then(res=>{Spinner.forEach(e=>e.hide(id)); return res;});
+            return AjaxUtils._get(url,data,property).then(res=>{Spinner.forEach(e=>e.hide(id));
+                                                                if( message ) Toast.forEach(t=>t.show('success' , message));
+                                                                return res;});
         }
     }
 
     static post(url , data={} , props={}) {
         const id = Spinner.forEach(e=>e.show())
+        const {message} = props;
         return axios({
             method: 'post',
             url: url,
@@ -35,11 +42,14 @@ export default class AjaxUtils {
         }).catch(err => {
             Spinner.forEach(e=>e.hide(id));
             AjaxUtils.errorHandler(err)})
-            .then(res=>{Spinner.forEach(e=>e.hide(id)); return res;});
+            .then(res=>{Spinner.forEach(e=>e.hide(id));
+                        if( message ) Toast.forEach(t=>t.show('success' , message));
+                        return res;});
     }
 
     static delete(url , data={} , props={}) {
         const id = Spinner.forEach(e=>e.show())
+        const {message} = props;
         return axios({
             method: 'delete',
             url : url,
@@ -47,10 +57,13 @@ export default class AjaxUtils {
         }).catch(err => {
             Spinner.forEach(e=>e.hide(id));
             AjaxUtils.errorHandler(err)})
-            .then(res=>{Spinner.forEach(e=>e.hide(id)); return res;});
+            .then(res=>{Spinner.forEach(e=>e.hide(id));
+                        if( message ) Toast.forEach(t=>t.show('success' , message));
+                        return res;});
     }
     static put(url , data={} , props ={}) {
         const id = Spinner.forEach(e=>e.show())
+        const {message} = props;
         return axios({
             method: 'put',
             url : url,
@@ -58,10 +71,13 @@ export default class AjaxUtils {
         }).catch(err => {
             Spinner.forEach(e=>e.hide(id));
             AjaxUtils.errorHandler(err)})
-            .then(res=>{Spinner.forEach(e=>e.hide(id)); return res;});
+            .then(res=>{Spinner.forEach(e=>e.hide(id));
+                        if( message ) Toast.forEach(t=>t.show('success' , message));
+                        return res;});
     }
     static errorHandler(err) {
         console.log('Error occuered! : ' + err);
+        Toast.forEach(t=>t.show('warning' , ''+err));
         throw {result : "fail" , message:"request failed!"};
     }
 

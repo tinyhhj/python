@@ -1,6 +1,6 @@
 import React from 'react';
 import PropType from 'prop-types';
-import {ListGroupItemRow , v4 , Body ,Modal , Button , AjaxUtils,FieldGroup} from 'Components';
+import {ListGroupItemRow , v4 , Body ,Modal , Button , AjaxUtils,FieldGroup , toast as Toast} from 'Components';
 
 
 export default class Contents extends React.Component {
@@ -35,6 +35,8 @@ export default class Contents extends React.Component {
     static defaultValue = {
         listHeader: {textAlign:"center"},
         notFoundMessage: (<h5>데이터가 없습니다</h5>),
+        mainContentsStyle: {marginLeft: '15%' , overflow:'hidden'},
+        sideBarContentsStyle: {width:'13%'},
     }
 
     componentDidMount() {
@@ -78,8 +80,10 @@ export default class Contents extends React.Component {
     }
 
     handleCreateButton() {
+        const { modalInput : {modalButton} } = this.state;
         AjaxUtils.post(routes['create_table_contents'] ,
-            {...this.state.modalInput , tableName : this.props.tableName})
+            {...this.state.modalInput , tableName : this.props.tableName}
+            ,{message : modalButton+' 되었습니다.'})
             .then(()=>this.init());
     }
 
@@ -90,15 +94,17 @@ export default class Contents extends React.Component {
           AjaxUtils.delete(routes['delete_table_contents'] , deleteLists
                                                                 .reduce((a,b)=>{a._id = a._id || [];
                                                                                 a._id.push(b);
-                                                                                return a;} , {tableName: this.props.tableName}))
+                                                                                return a;} , {tableName: this.props.tableName})
+                                                            , {message : '삭제 되었습니다.'})
               .then(res=> this.init())
         } else {
             // toast error
+            Toast.forEach(t=>t.show('warning' , '삭제항목을 선택해주세요.'));
         }
     }
 
     makeSideBarContentList() {
-        return [ <Button key={v4()} onClick={this.handleOpenDialog}>추가</Button> , <Button key={v4()} onClick={this.handleDeleteButton}>삭제</Button>]
+        return this.tableModel ? [ <Button key={v4()} onClick={this.handleOpenDialog}>추가</Button> , <Button key={v4()} onClick={this.handleDeleteButton}>삭제</Button>] : [];
     }
 
     makeContentList(contents){
@@ -166,9 +172,12 @@ export default class Contents extends React.Component {
 
         const {
             show,
-            deleteList,
             mainContents,
         } = this.state;
+
+        const {
+            mainContentsStyle
+        } = Contents.defaultValue;
 
         console.log(this.state);
 
@@ -177,7 +186,8 @@ export default class Contents extends React.Component {
         return(
 
             <div>
-                <Body sideBarContents={this.makeSideBarContentList()}>
+                <Body sideBarContents={this.makeSideBarContentList()}
+                      mainContentsStyle = {mainContentsStyle}>
                 {this.makeContentList(mainContents)}
                 </Body>
                 <Modal show={show}
@@ -185,7 +195,7 @@ export default class Contents extends React.Component {
                        bsSize={modalSize}
                        backdrop={modalBackDrop}>
                   <Modal.Header closeButton>
-                      <Modal.Title>Pattern</Modal.Title>
+                      <Modal.Title>{this.props.tableName.toUpperCase().replace(/_/g,' ')}</Modal.Title>
                   </Modal.Header>
                   <Modal.Body>
                       {show && this.makeModalContents()}

@@ -2,7 +2,7 @@ import {BrowserRouter as Router , Route , Switch} from 'react-router-dom';
 
 import React from 'react';
 import * as Components from 'Components';
-const {AjaxUtils , Header , NavItem , v4 , Spinner , Contents} = Components;
+const {AjaxUtils , Header , NavItem , v4 , Spinner , Contents , Toast} = Components;
 
 export default class App extends React.Component
 {
@@ -41,7 +41,7 @@ export default class App extends React.Component
     }
     render() {
         const {menus ,routeList , routes } = this.state;
-        const navItems = menus.map(e => <NavItem key={v4()} href={routes[e.Tables_in_accountbook]} eventKey={v4()}>{e.Tables_in_accountbook.toUpperCase().replace('_', ' ')}</NavItem>)
+        const navItems = menus.map(e => <NavItem key={v4()} href={routes[e.Tables_in_accountbook]} eventKey={v4()}>{e.Tables_in_accountbook.toUpperCase().replace(/_/g, ' ')}</NavItem>)
         const rl = routeList.map(k=>{    const contents = this.initContents[k];
                                             return <Route key={v4()}
                                                    path={routes[k]}
@@ -59,6 +59,7 @@ export default class App extends React.Component
                 </Switch>
             </Router>
             <Spinner />
+            <Toast />
             </div>
         )
     }
