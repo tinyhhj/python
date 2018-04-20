@@ -150,7 +150,7 @@ export default class Contents extends React.Component {
     }
 
     makeModalContents() {
-        const modalContents =  Object.keys(this.tableModel).filter(k=> k!=='modified_date' && k !== 'use_yn' && k !== '_id').map(k => {
+        const modalContents =  Object.keys(this.tableModel).filter(k=> k!=='modified_date' && (k !== 'use_yn' || this.state.modalInput.modalButton === '수정') && k !== '_id').map(k => {
             const _key = this.tableModel[k];
             return <FieldGroup key={_key}
                                id={_key}

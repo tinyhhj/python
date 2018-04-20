@@ -2,7 +2,7 @@ from com.accountbook import app;
 from com.accountbook.service.AccountBookService import AccountBookService;
 from com.accountbook.log import logger;
 import json;
-from flask import render_template ,request ,redirect
+from flask import render_template ,request ,redirect , send_from_directory;
 from com.accountbook.repository.AccountBookRepository import AccountBookRepository;
 from com.accountbook.config.routes import routes;
 '''
@@ -141,6 +141,7 @@ def outcomeCategory():
 @app.route(routes['unknown_message_pattern'] , methods=['GET'])
 def unknownMessagePattern():
     return index();
+
 
 
 

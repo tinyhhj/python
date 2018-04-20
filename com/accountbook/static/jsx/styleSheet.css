@@ -1,0 +1,15 @@
+ * {
+      box-sizing: border-box;
+  }
+  .list-group-item.list-group-item-success div {
+      margin: 5px;
+      overflow: hidden;
+  }
+  button.list-group-item div{
+      overflow: hidden;
+      margin: 5px;
+      max-height: 20px;
+  }
+  button.list-group-item {
+      padding: 5px;
+  }

@@ -174,7 +174,7 @@ class AccountBookService:
         tableName = requestData.pop('tableName');
         _id = '_id' in requestData and requestData.pop('_id');
         'modified_date' in requestData and requestData.pop('modified_date');
-        'use_yn' in requestData and requestData.pop('use_yn');
+#        'use_yn' in requestData and requestData.pop('use_yn');
         'modalButton' in requestData and requestData.pop('modalButton');
         print(tableName , _id)
 

@@ -59,7 +59,7 @@ class AccountBookQuery:
         qs = """update %s set """;
         for i in range(col_num):
             qs += " %s = '%s', "
-        qs = qs[:-2]+ " where _id = %s";
+        qs = qs+'modified_date = current_timestamp '+ " where _id = %s";
         return qs;
 
 

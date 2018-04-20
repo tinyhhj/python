@@ -14,7 +14,7 @@ routes = {
     'income_category': web+'/income/category',
     'outcome_category': web+'/outcome/category',
     'unknown_message_pattern': web+'/unknown/message/pattern',
-                           
+
 
     'get_table_contents' : was+'/table/contents',
     'delete_table_contents': was+'/table/contents',
