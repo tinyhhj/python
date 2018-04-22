@@ -27,6 +27,7 @@ export default class Toast extends React.Component {
             width : '100%',
             textAlign: 'center',
             color : 'white',
+            zIndex : '10000',
         }
     }
 

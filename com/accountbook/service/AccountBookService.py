@@ -170,6 +170,7 @@ class AccountBookService:
 
     def createTableContents(self):
         requestData = self.json_load(request.data);
+        copyRequestData = requestData.copy();
         print(requestData);
         tableName = requestData.pop('tableName');
         _id = '_id' in requestData and requestData.pop('_id');
@@ -179,7 +180,7 @@ class AccountBookService:
         print(tableName , _id)
 
         if _id :
-            qs = self.query.update_table_contents(self,len(requestData));
+            qs = self.query.update_table_contents(self,len(requestData) , {'modified_date' : 'modified_date' in copyRequestData});
             self.repo.executeQuery(qs % ((tableName,)+reduce(lambda x,y:x+y ,[(k,v) for k,v in requestData.items()]) +(_id, )),())
             print(qs % ((tableName,)+reduce(lambda x,y:x+y ,[(k,v) for k,v in requestData.items()]) +(_id, )))
         else:

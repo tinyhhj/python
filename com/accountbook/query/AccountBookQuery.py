@@ -55,11 +55,15 @@ class AccountBookQuery:
         for i in range(col_num):
             qs += "%s, ";
         return qs[:-2]+")";
-    def update_table_contents(self , col_num):
+    def update_table_contents(self , col_num , props = {}):
         qs = """update %s set """;
         for i in range(col_num):
             qs += " %s = '%s', "
-        qs = qs+'modified_date = current_timestamp '+ " where _id = %s";
+        if(props.get('modified_date' , False)):
+            qs = qs+'modified_date = current_timestamp '
+        else:
+            qs = qs[:-2]
+        qs += " where _id = %s";
         return qs;
 
 

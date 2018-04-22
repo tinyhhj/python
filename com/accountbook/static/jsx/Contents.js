@@ -10,14 +10,15 @@ export default class Contents extends React.Component {
             show: false,
             deleteList: {},
             mainContents: [],
-            sideBarContents: [],
-            modalContents: [],
+            modalInput: {},
         };
         this.handleCloseDialog = this.handleCloseDialog.bind(this);
         this.handleCreateButton = this.handleCreateButton.bind(this);
         this.handleDeleteButton = this.handleDeleteButton.bind(this);
         this.handleOpenDialog= this.handleOpenDialog.bind(this);
         this.handleUpdateButton = this.handleUpdateButton.bind(this);
+        this.inputKeySetting = this.inputKeySetting.bind(this);
+        this.init = this.init.bind(this);
     }
 
     static defaultProps = {
@@ -44,10 +45,9 @@ export default class Contents extends React.Component {
     }
 
     init() {
-        AjaxUtils.get(routes['get_table_contents'] , {tableName: this.props.tableName})
+        AjaxUtils.get(routes['get_table_contents'] , {tableName: this.props.tableName })
             .then(res=> {
-                this.tableModel = Object.keys(res.data[0])
-                    .reduce((a,b) =>{a[b] = v4(); return a;},{} )
+                this.inputKeySetting(res.data[0]);
                 this.setState({
                     show: false,
                     deleteList: {},
@@ -55,6 +55,13 @@ export default class Contents extends React.Component {
                     modalInput: {}
                 })
             })
+
+
+    }
+
+    inputKeySetting(res) {
+        this.tableModel = Object.keys(res ? res : this.tableModel)
+            .reduce((a,b) =>{a[b] = v4(); return a;},{} )
 
 
     }
@@ -73,14 +80,20 @@ export default class Contents extends React.Component {
     }
     handleUpdateButton(id , elem) {
         const modalButton="수정";
+        // this.inputKeySetting();
         this.setState({
             show: true,
             modalInput : {...elem , modalButton}
         })
     }
 
-    handleCreateButton() {
+    handleCreateButton(modalContents) {
         const { modalInput : {modalButton} } = this.state;
+        console.log(modalContents);
+        if ( modalContents.filter(e => e.props.validationstate !== 'success').length ) {
+            Toast.forEach(t=>t.show('warning' , '입력항목을 채워주세요.'));
+            return;
+        }
         AjaxUtils.post(routes['create_table_contents'] ,
             {...this.state.modalInput , tableName : this.props.tableName}
             ,{message : modalButton+' 되었습니다.'})
@@ -141,26 +154,34 @@ export default class Contents extends React.Component {
     }
 
     getFieldType(k) {
-        if( /password/.exec(k)) return 'password';
-        else if(/admin_id/.exec(k)) return 'text';
-        else if(/_id/.exec(k)) return 'number';
-        else if(/date/.exec(k)) return 'datetime';
-        else if(/perc/.exec(k)) return 'number';
-        else  return 'text';
+        // succ_len 추가
+        if( /password/.exec(k)) return ['password' , 1 ] ;
+        else if(/admin_id/.exec(k)) return ['text' , 1 ] ;
+        else if(/_id/.exec(k)) return ['text' , 1];
+        else if(/date/.exec(k)) return ['datetime' , 1];
+        else if(/perc/.exec(k)) return ['text' , 1];
+        else  return ['text' , 1];
     }
 
     makeModalContents() {
         const modalContents =  Object.keys(this.tableModel).filter(k=> k!=='modified_date' && (k !== 'use_yn' || this.state.modalInput.modalButton === '수정') && k !== '_id').map(k => {
             const _key = this.tableModel[k];
+            const [type , succ_len] = this.getFieldType(k);
+            const value = this.state.modalInput[k];
+            const validationState =  (value && (typeof value === 'number' || value.length >= succ_len) ) ? "success" : (!value || !value.length) ? null : "error";
+            // console.log(''+ typeof value + ' '+ value +' '+validationState + ' ' + type + ' ' +succ_len);
             return <FieldGroup key={_key}
                                id={_key}
                                label={k}
-                               type={this.getFieldType(k)}
+                               type={type}
                                onChange={e=>{e.stopPropagation();
                                             this.setState({modalInput : {...this.state.modalInput , [k]:e.target.value}})}}
-                               value={this.state.modalInput[k]}/>
+                               value={this.state.modalInput[k]}
+                               succ_len={succ_len}
+                               validationstate = {validationState}/>
         })
-        modalContents.push(<Button key={v4()} onClick={this.handleCreateButton}>{this.state.modalInput.modalButton}</Button>);
+
+        modalContents.push(<Button key={v4()} onClick={()=>this.handleCreateButton([...modalContents.slice(0,-1)])}>{this.state.modalInput.modalButton}</Button>);
         return modalContents;
     }
 
@@ -191,7 +212,7 @@ export default class Contents extends React.Component {
                 {this.makeContentList(mainContents)}
                 </Body>
                 <Modal show={show}
-                       onHide={this.handleCloseDialog}
+                       onHide={this.init}
                        bsSize={modalSize}
                        backdrop={modalBackDrop}>
                   <Modal.Header closeButton>
