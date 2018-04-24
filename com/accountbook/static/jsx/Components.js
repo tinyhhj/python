@@ -1,5 +1,5 @@
 import React from 'react';
-import {ListGroupItem ,Button , Checkbox , NavItem , Modal} from 'react-bootstrap';
+import {ListGroupItem ,Button , Checkbox , NavItem , Modal,FormGroup , FormControl} from 'react-bootstrap';
 import AjaxUtils from 'AjaxUtils';
 import FieldGroup from 'FieldGroup';
 import Body from 'Body';
@@ -70,6 +70,14 @@ const ModalForCreateCardCompany = ({onChange ,inputCheck ,state , onClick , moda
                     bsStyle="primary"
                     onClick={onClick}>{modalButtonDesc}</Button>]
 
+const Select = ({options , inputRef}) => {
+
+    return <FormGroup controlId="formControlsSelect">
+      <FormControl componentClass="select" placeholder="select" inputRef = {inputRef}>
+          {options}
+      </FormControl>
+    </FormGroup>
+}
 
 
 export {SideBar ,
@@ -93,5 +101,6 @@ export {SideBar ,
         FieldGroup,
         Toast,
         toast,
+        Select,
 };
 

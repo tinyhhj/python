@@ -1,6 +1,6 @@
 import React from 'react';
 import PropType from 'prop-types';
-import {ListGroupItemRow , v4 , Body ,Modal , Button , AjaxUtils,FieldGroup , toast as Toast} from 'Components';
+import {ListGroupItemRow , v4 , Body ,Modal , Button , AjaxUtils,FieldGroup , toast as Toast , Select} from 'Components';
 
 
 export default class Contents extends React.Component {
@@ -18,6 +18,8 @@ export default class Contents extends React.Component {
         this.handleOpenDialog= this.handleOpenDialog.bind(this);
         this.handleUpdateButton = this.handleUpdateButton.bind(this);
         this.inputKeySetting = this.inputKeySetting.bind(this);
+        this.handleSearchBtn = this.handleSearchBtn.bind(this);
+        this.makeSideBarContentList = this.makeSideBarContentList.bind(this);
         this.init = this.init.bind(this);
     }
 
@@ -35,7 +37,7 @@ export default class Contents extends React.Component {
 
     static defaultValue = {
         listHeader: {textAlign:"center"},
-        notFoundMessage: (<h5>데이터가 없습니다</h5>),
+        notFoundMessage: (<h5 style={{textAlign : "center"}}>조회할 데이터가 없습니다</h5>),
         mainContentsStyle: {marginLeft: '15%' , overflow:'hidden'},
         sideBarContentsStyle: {width:'13%'},
     }
@@ -45,7 +47,7 @@ export default class Contents extends React.Component {
     }
 
     init() {
-        AjaxUtils.get(routes['get_table_contents'] , {tableName: this.props.tableName })
+        return AjaxUtils.get(routes['get_table_contents'] , {tableName: this.props.tableName })
             .then(res=> {
                 this.inputKeySetting(res.data[0]);
                 this.setState({
@@ -117,11 +119,17 @@ export default class Contents extends React.Component {
     }
 
     makeSideBarContentList() {
-        return this.tableModel ? [ <Button key={v4()} onClick={this.handleOpenDialog}>추가</Button> , <Button key={v4()} onClick={this.handleDeleteButton}>삭제</Button>] : [];
+        const options = this.tableModel ? Object.keys(this.tableModel).map(v=><option key={v4()} value={v}>{v}</option>) : [];
+
+        return this.tableModel ? [  <Select key = {v4()} inputRef={r=>this.searchSelect = r} options={options}></Select> ,
+                                    <input ref={r=>this.searchInput = r}key ={v4()} type="text"></input>,
+                                    <Button key={v4()} onClick={this.handleSearchBtn}>검색</Button>,
+                                    <Button key={v4()} onClick={this.handleOpenDialog}>추가</Button> ,
+                                    <Button key={v4()} onClick={this.handleDeleteButton}>삭제</Button>,]: [];
     }
 
     makeContentList(contents){
-        if( !contents || !contents.length ) return Contents.defaultValue.notFoundMessage;
+        if( !contents || contents.length <= 1 ) return Contents.defaultValue.notFoundMessage;
         const items = [];
         const header = Object.keys(contents[0]);
         items.push(<ListGroupItemRow key = {v4()}
@@ -185,6 +193,18 @@ export default class Contents extends React.Component {
         return modalContents;
     }
 
+    handleSearchBtn() {
+
+        this.init()
+            .then(()=>{
+                const {mainContents} = this.state;
+                const filteredContents = mainContents.filter((e,i)=> (i === 0 || e[this.searchSelect.value].toString().includes(this.searchInput.value)))
+                console.log(mainContents +' ' +  filteredContents);
+                this.setState(
+                {mainContents:filteredContents}
+            )})
+    }
+
     render() {
         const {
             modalSize,
@@ -199,6 +219,7 @@ export default class Contents extends React.Component {
         const {
             mainContentsStyle
         } = Contents.defaultValue;
+
 
         console.log(this.state);
 
