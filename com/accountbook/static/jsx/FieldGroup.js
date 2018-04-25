@@ -11,6 +11,7 @@ import
 export default class FieldGroup extends React.Component {
 
     constructor(props){
+        console.log('FieldGroup con');
         super(props);
     }
 
@@ -27,7 +28,7 @@ export default class FieldGroup extends React.Component {
           <ControlLabel>{label}</ControlLabel>
           <FormControl {...{...sub_props , value}}
           />
-          <FormControl.Feedback validationState />
+          <FormControl.Feedback />
             {help && <HelpBlock>{help}</HelpBlock>}
         </FormGroup>
         )

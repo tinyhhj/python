@@ -71,7 +71,7 @@ const ModalForCreateCardCompany = ({onChange ,inputCheck ,state , onClick , moda
                     onClick={onClick}>{modalButtonDesc}</Button>]
 
 const Select = ({options , inputRef}) => {
-
+    console.log('Select rendering...');
     return <FormGroup controlId="formControlsSelect">
       <FormControl componentClass="select" placeholder="select" inputRef = {inputRef}>
           {options}

@@ -20,6 +20,7 @@ export default class Contents extends React.Component {
         this.inputKeySetting = this.inputKeySetting.bind(this);
         this.handleSearchBtn = this.handleSearchBtn.bind(this);
         this.makeSideBarContentList = this.makeSideBarContentList.bind(this);
+        this.mGetIn = this.mGetIn.bind(this);
         this.init = this.init.bind(this);
     }
 
@@ -42,6 +43,13 @@ export default class Contents extends React.Component {
         sideBarContentsStyle: {width:'13%'},
     }
 
+    mGetIn(obj , path) {
+        const [first , ...remain] = path;
+        if( !obj ) return false;
+        else if( !first ) return true;
+        else return this.mGetIn(obj[first] , remain);
+    }
+
     componentDidMount() {
         this.init();
     }
@@ -49,6 +57,7 @@ export default class Contents extends React.Component {
     init() {
         return AjaxUtils.get(routes['get_table_contents'] , {tableName: this.props.tableName })
             .then(res=> {
+                console.log('reset..');
                 this.inputKeySetting(res.data[0]);
                 this.setState({
                     show: false,
@@ -56,6 +65,7 @@ export default class Contents extends React.Component {
                     mainContents: res.data,
                     modalInput: {}
                 })
+                return res.data;
             })
 
 
@@ -119,10 +129,10 @@ export default class Contents extends React.Component {
     }
 
     makeSideBarContentList() {
-        const options = this.tableModel ? Object.keys(this.tableModel).map(v=><option key={v4()} value={v}>{v}</option>) : [];
+        const options = this.tableModel ? Object.keys(this.tableModel).map((v,i)=><option key={i} value={v}>{v}</option>) : [];
 
-        return this.tableModel ? [  <Select key = {v4()} inputRef={r=>this.searchSelect = r} options={options}></Select> ,
-                                    <input ref={r=>this.searchInput = r}key ={v4()} type="text"></input>,
+        return this.tableModel ? [  <Select key = {0} inputRef={r=>this.searchSelect = r} options={options} ></Select> ,
+                                    <input ref={r=>this.searchInput = r} key ={v4()} type="text"></input>,
                                     <Button key={v4()} onClick={this.handleSearchBtn}>검색</Button>,
                                     <Button key={v4()} onClick={this.handleOpenDialog}>추가</Button> ,
                                     <Button key={v4()} onClick={this.handleDeleteButton}>삭제</Button>,]: [];
@@ -174,6 +184,7 @@ export default class Contents extends React.Component {
     makeModalContents() {
         const modalContents =  Object.keys(this.tableModel).filter(k=> k!=='modified_date' && (k !== 'use_yn' || this.state.modalInput.modalButton === '수정') && k !== '_id').map(k => {
             const _key = this.tableModel[k];
+            // const _key = v4();
             const [type , succ_len] = this.getFieldType(k);
             const value = this.state.modalInput[k];
             const validationState =  (value && (typeof value === 'number' || value.length >= succ_len) ) ? "success" : (!value || !value.length) ? null : "error";
@@ -194,12 +205,14 @@ export default class Contents extends React.Component {
     }
 
     handleSearchBtn() {
+        const targetValue = this.searchSelect.value;
+        const searchValue = this.searchInput.value;
 
         this.init()
-            .then(()=>{
-                const {mainContents} = this.state;
-                const filteredContents = mainContents.filter((e,i)=> (i === 0 || e[this.searchSelect.value].toString().includes(this.searchInput.value)))
-                console.log(mainContents +' ' +  filteredContents);
+            .then(res=>{
+                console.log('filtering..');
+                const filteredContents = res.filter((e,i)=> (i === 0 || e[targetValue].toString().includes(searchValue)))
+                // console.log(mainContents +' ' +  filteredContents);
                 this.setState(
                 {mainContents:filteredContents}
             )})
