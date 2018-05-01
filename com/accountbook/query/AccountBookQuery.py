@@ -42,12 +42,12 @@ class AccountBookQuery:
     get_table_contents = """ select *
                              from %s"""
     def create_table_contents(self , col_num):
-        qs = """insert into %s (""";
+        qs = """insert into {} (""";
         for i in range(col_num):
-            qs += "%s, ";
+            qs += "{}, ";
         qs = qs[:-2]+") values(";
         for i in range(col_num):
-            qs += "'%s', ";
+            qs += "'{}', ";
         return qs[:-2]+")";
 
     def delete_table_contents(self , col_num):

@@ -14,6 +14,7 @@ routes = {
     'income_category': web+'/income/category',
     'outcome_category': web+'/outcome/category',
     'unknown_message_pattern': web+'/unknown/message/pattern',
+    'recruit_link' : web+'/recruit/link',
 
 
     'get_table_contents' : was+'/table/contents',
@@ -30,5 +31,8 @@ routes = {
     'update_company_info' : was+'/company/info/update',
     'delete_company_infos' : was+'/company/info/deletes',
     'get_routes' : was+'/accountbook/routes',
+
+
+    'naver_recruit_link' : 'http://recruit.navercorp.com/naver/job/listJson',
 }
 

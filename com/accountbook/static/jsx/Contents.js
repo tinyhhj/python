@@ -41,6 +41,15 @@ export default class Contents extends React.Component {
         notFoundMessage: (<h5 style={{textAlign : "center"}}>조회할 데이터가 없습니다</h5>),
         mainContentsStyle: {marginLeft: '15%' , overflow:'hidden'},
         sideBarContentsStyle: {width:'13%'},
+        recruit_mapping : {
+            naver : {
+                openYn : 'use_yn',
+                staYmd : 'start_date',
+                endYmd : 'end_date',
+                dDay : 'd_day',
+                jobNm : 'recruit_title',
+            }
+        }
     }
 
     mGetIn(obj , path) {
@@ -51,7 +60,62 @@ export default class Contents extends React.Component {
     }
 
     componentDidMount() {
-        this.init();
+        this.init()
+            .then(res=> {
+                if(this.props.tableName !== 'recruit_link') throw 'no recruit_link';
+                return AjaxUtils.post(routes['naver_recruit_link'] , { classNm: 'developer',
+                                                                entTypeCd: '',
+                                                                searchTxt: '',
+                                                                startNum: 1,
+                                                                endNum: 9999} , {formData : true } );
+            })
+            .then(res => {
+                const {mainContents} = this.state;
+                const recruit_lists = res.data.filter(e => e.openYn === 'Y' && !mainContents.slice(1).reduce((a,b)=>a | b['recruit_title'] === e.jobNm , false));
+                console.log(mainContents.slice(1));
+                console.log(recruit_lists);
+                const recruit_mapping = Contents.defaultValue.recruit_mapping.naver;
+                recruit_lists.map((e,i) => {
+                    const req = {company_name : 'naver'};
+                    for ( var k in recruit_mapping) {
+                        if(k === 'dDay' && !e[k]) {
+                            e[k] = "9999";
+                        }
+                        req[recruit_mapping[k]] = e[k];
+
+                    }
+                    console.log(req);
+                    AjaxUtils.post(routes['create_table_contents'] ,
+                        {...req , tableName : 'recruit_link'});
+                })
+            })
+            .catch(e=>console.log(e));
+
+        // if(this.props.tableName === 'recruit_link') {
+        //     console.log('table ' + this.props.tableName);
+        //     this.interval = setInterval(() => {
+        //         AjaxUtils.post(routes['naver_recruit_link'] , { classNm: 'developer',
+        //                                                         entTypeCd: '',
+        //                                                         searchTxt: '',
+        //                                                         startNum: 1,
+        //                                                         endNum: 9999} , {formData : true } )
+        //             .then(res => {  console.log(res);
+        //                             const recruit_lists = res.data.filter(e => e.openYn === 'Y');
+        //                             const recruit_mapping = Contents.defaultValue.recruit_mapping.naver;
+        //                             const req = {company_name : 'naver'};
+        //                             recruit_lists.map(e => {
+        //                                 for ( k in recruit_mapping) {
+        //                                     req[recruit_mapping[k]] = e[k];
+        //                                 }
+        //
+        //                             })
+        //                             clearInterval(this.interval);} );
+        //     } , 10*1000)
+        // }
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.interval);
     }
 
     init() {

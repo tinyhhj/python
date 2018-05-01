@@ -142,6 +142,10 @@ def outcomeCategory():
 def unknownMessagePattern():
     return index();
 
+@app.route(routes['recruit_link'] , methods=['GET'])
+def recruitLink():
+    return index();
+
 
 
 

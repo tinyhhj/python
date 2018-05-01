@@ -171,13 +171,13 @@ class AccountBookService:
     def createTableContents(self):
         requestData = self.json_load(request.data);
         copyRequestData = requestData.copy();
-        print(requestData);
+        #print(requestData);
         tableName = requestData.pop('tableName');
         _id = '_id' in requestData and requestData.pop('_id');
         'modified_date' in requestData and requestData.pop('modified_date');
 #        'use_yn' in requestData and requestData.pop('use_yn');
         'modalButton' in requestData and requestData.pop('modalButton');
-        print(tableName , _id)
+        print(tableName , _id )
 
         if _id :
             qs = self.query.update_table_contents(self,len(requestData) , {'modified_date' : 'modified_date' in copyRequestData});
@@ -185,8 +185,11 @@ class AccountBookService:
             print(qs % ((tableName,)+reduce(lambda x,y:x+y ,[(k,v) for k,v in requestData.items()]) +(_id, )))
         else:
             qs = self.query.create_table_contents(self,len(requestData));
-            self.repo.executeQuery(qs % ((tableName,) + tuple(requestData.keys()) + tuple(requestData.values())), ())
-            print(qs % ((tableName,)+ tuple(requestData.keys()) + tuple(requestData.values())))
+            print(qs.format(*((tableName,) + tuple(requestData.keys()) + tuple(requestData.values()))))
+            for key, value in requestData.items():
+                print( key , value);
+            self.repo.executeQuery(qs.format(*((tableName,) + tuple(requestData.keys()) + tuple(requestData.values()))), ())
+            print(qs.format(*((tableName,) + tuple(requestData.keys()) + tuple(requestData.values()))))
         return json.dumps(self.make_response());
     def deleteTableContents(self):
         requestData = self.json_load(request.data);

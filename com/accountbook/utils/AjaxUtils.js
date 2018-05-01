@@ -34,7 +34,14 @@ export default class AjaxUtils {
 
     static post(url , data={} , props={}) {
         const id = Spinner.forEach(e=>e.show())
-        const {message} = props;
+        const {message , formData } = props;
+        if( formData ) {
+            const body = new FormData();
+            for ( var k in data ) {
+                body.set(k , data[k]);
+            }
+            data = body;
+        }
         return axios({
             method: 'post',
             url: url,
