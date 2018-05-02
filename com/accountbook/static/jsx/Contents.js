@@ -1,6 +1,6 @@
 import React from 'react';
 import PropType from 'prop-types';
-import {ListGroupItemRow , v4 , Body ,Modal , Button , AjaxUtils,FieldGroup , toast as Toast , Select} from 'Components';
+import {ListGroupItemRow , v4 , Body ,Modal , Button , AjaxUtils,FieldGroup , toast as Toast , Select , MdlListItem} from 'Components';
 
 
 export default class Contents extends React.Component {
@@ -39,7 +39,7 @@ export default class Contents extends React.Component {
     static defaultValue = {
         listHeader: {textAlign:"center"},
         notFoundMessage: (<h5 style={{textAlign : "center"}}>조회할 데이터가 없습니다</h5>),
-        mainContentsStyle: {marginLeft: '15%' , overflow:'hidden'},
+        mainContentsStyle: {marginLeft: '15%',},
         sideBarContentsStyle: {width:'13%'},
         recruit_mapping : {
             naver : {
@@ -48,6 +48,7 @@ export default class Contents extends React.Component {
                 endYmd : 'end_date',
                 dDay : 'd_day',
                 jobNm : 'recruit_title',
+               /* jobText: 'recruit_data',*/
             }
         }
     }
@@ -61,35 +62,7 @@ export default class Contents extends React.Component {
 
     componentDidMount() {
         this.init()
-            .then(res=> {
-                if(this.props.tableName !== 'recruit_link') throw 'no recruit_link';
-                return AjaxUtils.post(routes['naver_recruit_link'] , { classNm: 'developer',
-                                                                entTypeCd: '',
-                                                                searchTxt: '',
-                                                                startNum: 1,
-                                                                endNum: 9999} , {formData : true } );
-            })
-            .then(res => {
-                const {mainContents} = this.state;
-                const recruit_lists = res.data.filter(e => e.openYn === 'Y' && !mainContents.slice(1).reduce((a,b)=>a | b['recruit_title'] === e.jobNm , false));
-                console.log(mainContents.slice(1));
-                console.log(recruit_lists);
-                const recruit_mapping = Contents.defaultValue.recruit_mapping.naver;
-                recruit_lists.map((e,i) => {
-                    const req = {company_name : 'naver'};
-                    for ( var k in recruit_mapping) {
-                        if(k === 'dDay' && !e[k]) {
-                            e[k] = "9999";
-                        }
-                        req[recruit_mapping[k]] = e[k];
 
-                    }
-                    console.log(req);
-                    AjaxUtils.post(routes['create_table_contents'] ,
-                        {...req , tableName : 'recruit_link'});
-                })
-            })
-            .catch(e=>console.log(e));
 
         // if(this.props.tableName === 'recruit_link') {
         //     console.log('table ' + this.props.tableName);
@@ -119,8 +92,10 @@ export default class Contents extends React.Component {
     }
 
     init() {
+        let results;
         return AjaxUtils.get(routes['get_table_contents'] , {tableName: this.props.tableName })
             .then(res=> {
+                results=res.data;
                 console.log('reset..');
                 this.inputKeySetting(res.data[0]);
                 this.setState({
@@ -131,6 +106,37 @@ export default class Contents extends React.Component {
                 })
                 return res.data;
             })
+        .then(res=> {
+                if(this.props.tableName !== 'recruit_link') throw 'no recruit_link';
+                return AjaxUtils.post(routes['naver_recruit_link'] , { classNm: 'developer',
+                                                                entTypeCd: '',
+                                                                searchTxt: '',
+                                                                startNum: 1,
+                                                                endNum: 9999} , {formData : true } );
+            })
+            .then(res => {
+                const {mainContents} = this.state;
+                const recruit_lists = res.data.filter(e => e.openYn === 'Y' && !mainContents.slice(1).reduce((a,b)=>a | b['recruit_title'] === e.jobNm , false));
+                console.log(mainContents.slice(1));
+                console.log(recruit_lists);
+                const recruit_mapping = Contents.defaultValue.recruit_mapping.naver;
+                recruit_lists.map((e,i) => {
+                    const req = {company_name : 'naver'};
+                    for ( var k in recruit_mapping) {
+                        if(k === 'dDay' && !e[k]) {
+                            e[k] = "9999";
+                        }
+                        req[recruit_mapping[k]] = e[k];
+
+                    }
+                    console.log(req);
+                    AjaxUtils.post(routes['create_table_contents'] ,
+                        {...req , tableName : 'recruit_link'});
+
+                })
+                return results;
+            })
+            .catch(e=>{console.log(e); return results;});
 
 
     }
@@ -206,17 +212,30 @@ export default class Contents extends React.Component {
         if( !contents || contents.length <= 1 ) return Contents.defaultValue.notFoundMessage;
         const items = [];
         const header = Object.keys(contents[0]);
-        items.push(<ListGroupItemRow key = {v4()}
+        const sizePerc = contents.reduce((a,b)=> {
+            for( var k in b ){
+                b[k] = b[k] || '';
+                a[k] = a[k] + b[k].toString().length || b[k].toString().length;
+                a.sum += b[k].toString().length;
+            }
+            return a;
+        } , {sum:0});
+        console.log('sizePerc');
+        console.log(sizePerc);
+        const widthPerc = header.map(k=>Math.round(sizePerc[k]/sizePerc.sum*100));
+        console.log(widthPerc);
+        items.push(<MdlListItem      key = {v4()}
                                      num_col={header.length}
                                      col_contents={header}
                                      header={true}
                                      bsStyle="success"
+                                     widthPerc = {widthPerc}
                                      style={Contents.defaultValue.listHeader}/>);
         contents.slice(1).forEach(e => {
             const {_id} = e;
             const data = header.map(k => e[k])
             let checkRef;
-            items.push(<ListGroupItemRow
+            items.push(<MdlListItem
                 key = {v4()}
                 num_col = {data.length}
                 col_contents={data}
@@ -230,9 +249,10 @@ export default class Contents extends React.Component {
                 }}
                 checked={this.state.deleteList[_id]}
                 updateItem={()=>this.handleUpdateButton(_id , e)}
+                widthPerc={widthPerc}
             />
             )});
-        return items;
+        return <ul className="mdl-list">{items}</ul>;
     }
 
     getFieldType(k) {
@@ -280,6 +300,7 @@ export default class Contents extends React.Component {
                 this.setState(
                 {mainContents:filteredContents}
             )})
+
     }
 
     render() {

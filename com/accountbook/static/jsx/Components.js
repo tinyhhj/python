@@ -45,6 +45,25 @@ const ListGroupItemRow = ({num_col , col_contents ,header, checkRef , checked, r
     )
 }
 
+const MdlListItem = ({num_col , col_contents , header , checkRef , checked , rowClick , updateItem , widthPerc , ...props}) => {
+    const children =[];
+    const defaultStyle = { padding : '0 20px' , verticalAlign : 'middle' , textAlign :'center' , display:'table-cell'};
+    const headerStyle = {backgroundColor : '#888' , color : '#fff' , display: 'table'};
+    for( var i = 0 ; i < num_col ; i++) {
+        const width = widthPerc[i]+'%';
+        children.push(<span key={v4()} style={{...defaultStyle , width}}>{col_contents[i]}</span>);
+    }
+    return(
+        <li className="mdl-list__item" onClick={rowClick} style={ header ? headerStyle : {borderBottom : '1px solid #e6e6e6' , display:'table'}}>
+            {!header && <input style={defaultStyle} type="checkbox" ref={checkRef} defaultChecked={checked} />}
+            {header && <div style={{ width: '14px'}}>{''}</div>}
+            {children}
+            {header && <div style={{width: '64px'}}>{''}</div>}
+            {!header && <i className="material-icons" style={defaultStyle} onClick={e=>{e.stopPropagation();updateItem();}}>mode_edit</i>}
+        </li>
+    )
+}
+
 const ModalForCreateCardCompany = ({onChange ,inputCheck ,state , onClick , modalButtonDesc}) =>
     [<FieldGroup
                key="cardCompanyName"
@@ -102,5 +121,6 @@ export {SideBar ,
         Toast,
         toast,
         Select,
+        MdlListItem,
 };
 

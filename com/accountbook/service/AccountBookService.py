@@ -94,7 +94,7 @@ class AccountBookService:
 
     def json_load(self, data):
         json_str = (data).decode("utf-8")
-        return json.loads(json_str.replace('\n', '\\n'));
+        return json.loads(json_str.replace('\n', '\\n').replace('\r','\\r'));
 
     def getPatternList(self):
         results = self.repo.selectQuery(self.query.find_all_message_pattern, ());
@@ -177,6 +177,8 @@ class AccountBookService:
         'modified_date' in requestData and requestData.pop('modified_date');
 #        'use_yn' in requestData and requestData.pop('use_yn');
         'modalButton' in requestData and requestData.pop('modalButton');
+        if('recruit_data' in requestData ):
+            requestData['recruit_data'] = requestData['recruit_data'].replace("'" , '');
         print(tableName , _id )
 
         if _id :

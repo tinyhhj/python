@@ -3,13 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="c4cf1006-658f-4ce9-91ba-e8e5b352bba2" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/com/accountbook/config/routes.py" afterPath="$PROJECT_DIR$/com/accountbook/config/routes.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/com/accountbook/controller/AccounBookController.py" afterPath="$PROJECT_DIR$/com/accountbook/controller/AccounBookController.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/com/accountbook/query/AccountBookQuery.py" afterPath="$PROJECT_DIR$/com/accountbook/query/AccountBookQuery.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/com/accountbook/service/AccountBookService.py" afterPath="$PROJECT_DIR$/com/accountbook/service/AccountBookService.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/com/accountbook/static/js/bundle.js" afterPath="$PROJECT_DIR$/com/accountbook/static/js/bundle.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/com/accountbook/static/jsx/Components.js" afterPath="$PROJECT_DIR$/com/accountbook/static/jsx/Components.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/com/accountbook/static/jsx/Contents.js" afterPath="$PROJECT_DIR$/com/accountbook/static/jsx/Contents.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/com/accountbook/utils/AjaxUtils.js" afterPath="$PROJECT_DIR$/com/accountbook/utils/AjaxUtils.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -24,7 +21,7 @@
     <SUITE FILE_PATH="coverage/untitled$QueryBuilder.coverage" NAME="QueryBuilder Coverage Results" MODIFIED="1519648384196" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/com/accountbook/query" />
     <SUITE FILE_PATH="coverage/untitled$AccountBookRepository__1_.coverage" NAME="AccountBookRepository (1) Coverage Results" MODIFIED="1519654660168" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/com/accountbook/repository" />
     <SUITE FILE_PATH="coverage/untitled$domain.coverage" NAME="domain Coverage Results" MODIFIED="1519655553172" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/com/accountbook/repository" />
-    <SUITE FILE_PATH="coverage/untitled$Application__1_.coverage" NAME="Application (1) Coverage Results" MODIFIED="1525163722836" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/com/accountbook" />
+    <SUITE FILE_PATH="coverage/untitled$Application__1_.coverage" NAME="Application (1) Coverage Results" MODIFIED="1525200109090" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/com/accountbook" />
     <SUITE FILE_PATH="coverage/untitled$Application.coverage" NAME="Application Coverage Results" MODIFIED="1519578273395" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/com/AccountBook" />
   </component>
   <component name="FavoritesManager">
@@ -32,11 +29,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Components.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Components.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/com/accountbook/static/jsx/Components.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="80" column="0" lean-forward="false" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
+            <state relative-caret-position="266">
+              <caret line="60" column="46" lean-forward="false" selection-start-line="60" selection-start-column="46" selection-end-line="60" selection-end-column="46" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/com/accountbook/templates/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="12" column="26" lean-forward="true" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -46,7 +55,7 @@
         <entry file="file://$PROJECT_DIR$/com/accountbook/controller/AccounBookController.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="320">
-              <caret line="112" column="61" lean-forward="true" selection-start-line="112" selection-start-column="61" selection-end-line="112" selection-end-column="61" />
+              <caret line="112" column="58" lean-forward="true" selection-start-line="112" selection-start-column="58" selection-end-line="112" selection-end-column="58" />
               <folding />
             </state>
           </provider>
@@ -55,8 +64,8 @@
       <file leaf-file-name="AccountBookService.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/com/accountbook/service/AccountBookService.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="298">
-              <caret line="189" column="36" lean-forward="false" selection-start-line="189" selection-start-column="36" selection-end-line="189" selection-end-column="36" />
+            <state relative-caret-position="333">
+              <caret line="192" column="34" lean-forward="true" selection-start-line="192" selection-start-column="34" selection-end-line="192" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -86,24 +95,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Entry.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/com/accountbook/static/jsx/Entry.js">
+      <file leaf-file-name="Body.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/com/accountbook/static/jsx/Body.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="6" column="28" lean-forward="false" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
+            <state relative-caret-position="225">
+              <caret line="16" column="20" lean-forward="false" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="App.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/com/accountbook/static/jsx/App.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
-              <caret line="34" column="33" lean-forward="false" selection-start-line="34" selection-start-column="24" selection-end-line="34" selection-end-column="33" />
-              <folding>
-                <element signature="e#0#74#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -118,11 +115,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Contents.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Contents.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/com/accountbook/static/jsx/Contents.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="343">
-              <caret line="73" column="100" lean-forward="true" selection-start-line="73" selection-start-column="100" selection-end-line="73" selection-end-column="100" />
+            <state relative-caret-position="369">
+              <caret line="254" column="39" lean-forward="false" selection-start-line="254" selection-start-column="39" selection-end-line="254" selection-end-column="39" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -165,20 +162,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>setState</find>
-      <find>mainContentsStyle</find>
-      <find>FormGroup</find>
-      <find>this.tableModel</find>
-      <find>Select</find>
-      <find>searchSelect</find>
-      <find>handleSearchBtn</find>
-      <find>makeContentList</find>
-      <find>init</find>
-      <find>FormControl</find>
-      <find>validationstate</find>
-      <find>makeSideBarContentList</find>
-      <find>getIn</find>
-      <find>validationState</find>
       <find>routeList</find>
       <find>props</find>
       <find>routes</find>
@@ -187,14 +170,28 @@
       <find>handleCreateButton</find>
       <find>modalInput</find>
       <find>tableModel</find>
-      <find>mainContents</find>
       <find>reduce</find>
       <find>get_table_contents</find>
       <find>{</find>
-      <find>'</find>
       <find>print</find>
       <find>recruit</find>
+      <find>\n</find>
+      <find>recruit_data</find>
+      <find>replace</find>
+      <find>make_response</find>
+      <find>json_load</find>
       <find>create_table_contents</find>
+      <find>'</find>
+      <find>resulsts</find>
+      <find>init</find>
+      <find>header</find>
+      <find>mainContents</find>
+      <find>overflw</find>
+      <find>mainContentsStyle</find>
+      <find>overflow</find>
+      <find>listHeader</find>
+      <find>MdlListItem</find>
+      <find>makeContentList</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -246,17 +243,17 @@
         <option value="$PROJECT_DIR$/com/accountbook/static/jsx/Body.js" />
         <option value="$PROJECT_DIR$/com/accountbook/static/jsx/styleSheet.css" />
         <option value="$PROJECT_DIR$/com/accountbook/static/jsx/App.js" />
-        <option value="$PROJECT_DIR$/com/accountbook/templates/index.html" />
         <option value="$PROJECT_DIR$/com/accountbook/static/jsx/Toast.js" />
         <option value="$PROJECT_DIR$/com/accountbook/static/jsx/FieldGroup.js" />
-        <option value="$PROJECT_DIR$/com/accountbook/static/jsx/Components.js" />
         <option value="$PROJECT_DIR$/com/accountbook/controller/AccounBookController.py" />
         <option value="$PROJECT_DIR$/com/accountbook/log/logging" />
         <option value="$PROJECT_DIR$/com/accountbook/utils/AjaxUtils.js" />
         <option value="$PROJECT_DIR$/com/accountbook/config/routes.py" />
         <option value="$PROJECT_DIR$/com/accountbook/query/AccountBookQuery.py" />
         <option value="$PROJECT_DIR$/com/accountbook/service/AccountBookService.py" />
+        <option value="$PROJECT_DIR$/com/accountbook/templates/index.html" />
         <option value="$PROJECT_DIR$/com/accountbook/static/jsx/Contents.js" />
+        <option value="$PROJECT_DIR$/com/accountbook/static/jsx/Components.js" />
       </list>
     </option>
   </component>
@@ -269,9 +266,9 @@
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-19" />
-    <option name="y" value="45" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-22" />
+    <option name="y" value="30" />
     <option name="width" value="1440" />
     <option name="height" value="815" />
   </component>
@@ -337,6 +334,13 @@
               <item name="accountbook" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
               <item name="jsx" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="untitled" type="b2602c69:ProjectViewProjectNode" />
+              <item name="untitled" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="accountbook" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="untitled" type="b2602c69:ProjectViewProjectNode" />
@@ -530,7 +534,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="23" width="1440" height="815" extended-state="6" />
+    <frame x="-22" y="30" width="1440" height="815" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -790,14 +794,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/com/accountbook/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="24" lean-forward="true" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/com/accountbook/static/jsx/styleSheet.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -824,6 +820,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="469">
           <caret line="115" column="15" lean-forward="false" selection-start-line="115" selection-start-column="15" selection-end-line="115" selection-end-column="15" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -844,14 +841,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/com/accountbook/static/jsx/Body.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/com/accountbook/static/jsx/Header.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -867,20 +856,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/com/accountbook/static/jsx/Components.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="80" column="0" lean-forward="false" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/com/accountbook/static/jsx/App.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="465">
           <caret line="34" column="33" lean-forward="false" selection-start-line="34" selection-start-column="24" selection-end-line="34" selection-end-column="33" />
           <folding>
-            <element signature="e#0#74#0" expanded="true" />
+            <element signature="e#0#74#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -942,23 +923,49 @@
     <entry file="file://$PROJECT_DIR$/com/accountbook/controller/AccounBookController.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="320">
-          <caret line="112" column="61" lean-forward="true" selection-start-line="112" selection-start-column="61" selection-end-line="112" selection-end-column="61" />
+          <caret line="112" column="58" lean-forward="true" selection-start-line="112" selection-start-column="58" selection-end-line="112" selection-end-column="58" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/com/accountbook/service/AccountBookService.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="189" column="36" lean-forward="false" selection-start-line="189" selection-start-column="36" selection-end-line="189" selection-end-column="36" />
+        <state relative-caret-position="333">
+          <caret line="192" column="34" lean-forward="true" selection-start-line="192" selection-start-column="34" selection-end-line="192" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/accountbook/static/jsx/Body.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="16" column="20" lean-forward="false" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/accountbook/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="26" lean-forward="true" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/com/accountbook/static/jsx/Contents.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="343">
-          <caret line="73" column="100" lean-forward="true" selection-start-line="73" selection-start-column="100" selection-end-line="73" selection-end-column="100" />
+        <state relative-caret-position="369">
+          <caret line="254" column="39" lean-forward="false" selection-start-line="254" selection-start-column="39" selection-end-line="254" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/accountbook/static/jsx/Components.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="60" column="46" lean-forward="false" selection-start-line="60" selection-start-column="46" selection-end-line="60" selection-end-column="46" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
