@@ -7,11 +7,11 @@ export default class Body extends React.Component {
     }
 
     render() {
-        const {children , sideBarContents , mainContentsStyle} = this.props;
+        const {children , sideBarContents , mainContentsStyle , sideBarContentsStyle} = this.props;
         console.log(sideBarContents)
      return(
-         <div className="w3-container">
-             <SideBar width="10%">
+         <div className="mdl-layout mdl-js-layout mdl-layout--fixed-drawer has-drawer is-upgraded">
+             <SideBar style={sideBarContentsStyle}>
                  {sideBarContents}
              </SideBar>
              <MainContents style={mainContentsStyle}>

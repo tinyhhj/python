@@ -12,10 +12,11 @@ import {v4} from 'uuid';
 import Spinner , {spinner} from 'Spinner';
 import Contents from 'Contents';
 import Toast , {toast}from 'Toast'
+import {DataTable , TableHeader} from 'react-mdl'
 
-const SideBar = ({children , width}) => {
+const SideBar = ({children , style}) => {
     return (
-      <div className="w3-sidebar w3-bar-block" style={{width: width}}>
+      <div className="mdl-layout__drawer" style={style}>
           {children}
       </div>
     );
@@ -45,23 +46,23 @@ const ListGroupItemRow = ({num_col , col_contents ,header, checkRef , checked, r
     )
 }
 
-const MdlListItem = ({num_col , col_contents , header , checkRef , checked , rowClick , updateItem , widthPerc , ...props}) => {
+const MdlListItem = ({num_col , col_contents , header , checkRef , checked , rowClick , updateItem , ...props}) => {
     const children =[];
     const defaultStyle = { padding : '0 20px' , verticalAlign : 'middle' , textAlign :'center' , display:'table-cell'};
     const headerStyle = {backgroundColor : '#888' , color : '#fff' , display: 'table'};
     for( var i = 0 ; i < num_col ; i++) {
-        const width = widthPerc[i]+'%';
-        children.push(<span key={v4()} style={{...defaultStyle , width}}>{col_contents[i]}</span>);
+        // const width = widthPerc[i]+'%';
+        header ? children.push(<th key={v4()} style={defaultStyle}>{col_contents[i]}</th>)
+            : children.push(<td key={v4()} style={defaultStyle}>{col_contents[i]}</td>);
     }
-    return(
-        <li className="mdl-list__item" onClick={rowClick} style={ header ? headerStyle : {borderBottom : '1px solid #e6e6e6' , display:'table'}}>
-            {!header && <input style={defaultStyle} type="checkbox" ref={checkRef} defaultChecked={checked} />}
-            {header && <div style={{ width: '14px'}}>{''}</div>}
+    const row =
+        (<tr className="mdl-list__item" onClick={rowClick} style={ header ? headerStyle : {borderBottom : '1px solid #e6e6e6' , display:'table'}}>
             {children}
-            {header && <div style={{width: '64px'}}>{''}</div>}
-            {!header && <i className="material-icons" style={defaultStyle} onClick={e=>{e.stopPropagation();updateItem();}}>mode_edit</i>}
-        </li>
-    )
+            {header && <td style={{width: '64px'}}>{''}</td>}
+            {!header && <td><i className="material-icons" style={defaultStyle} onClick={e=>{e.stopPropagation();updateItem();}}>mode_edit</i></td>}
+        </tr>);
+    return header ? <thead>{row}</thead> : <tbody>{row}</tbody>
+
 }
 
 const ModalForCreateCardCompany = ({onChange ,inputCheck ,state , onClick , modalButtonDesc}) =>
@@ -122,5 +123,7 @@ export {SideBar ,
         toast,
         Select,
         MdlListItem,
+        DataTable,
+        TableHeader,
 };
 

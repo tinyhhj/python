@@ -1,6 +1,6 @@
 import React from 'react';
 import PropType from 'prop-types';
-import {ListGroupItemRow , v4 , Body ,Modal , Button , AjaxUtils,FieldGroup , toast as Toast , Select , MdlListItem} from 'Components';
+import {ListGroupItemRow , v4 , Body ,Modal , Button , AjaxUtils,FieldGroup , toast as Toast , Select , MdlListItem , TableHeader , DataTable} from 'Components';
 
 
 export default class Contents extends React.Component {
@@ -39,8 +39,8 @@ export default class Contents extends React.Component {
     static defaultValue = {
         listHeader: {textAlign:"center"},
         notFoundMessage: (<h5 style={{textAlign : "center"}}>조회할 데이터가 없습니다</h5>),
-        mainContentsStyle: {marginLeft: '15%',},
-        sideBarContentsStyle: {width:'13%'},
+        mainContentsStyle: {marginLeft: '15%' , width : '100%' , height: '715px' , overflow: 'scroll'},
+        sideBarContentsStyle: {width:'14.5%'},
         recruit_mapping : {
             naver : {
                 openYn : 'use_yn',
@@ -204,7 +204,7 @@ export default class Contents extends React.Component {
         return this.tableModel ? [  <Select key = {0} inputRef={r=>this.searchSelect = r} options={options} ></Select> ,
                                     <input ref={r=>this.searchInput = r} key ={v4()} type="text"></input>,
                                     <Button key={v4()} onClick={this.handleSearchBtn}>검색</Button>,
-                                    <Button key={v4()} onClick={this.handleOpenDialog}>추가</Button> ,
+                                     <Button key={v4()} onClick={this.handleOpenDialog}>추가</Button> ,
                                     <Button key={v4()} onClick={this.handleDeleteButton}>삭제</Button>,]: [];
     }
 
@@ -212,47 +212,83 @@ export default class Contents extends React.Component {
         if( !contents || contents.length <= 1 ) return Contents.defaultValue.notFoundMessage;
         const items = [];
         const header = Object.keys(contents[0]);
-        const sizePerc = contents.reduce((a,b)=> {
-            for( var k in b ){
-                b[k] = b[k] || '';
-                a[k] = a[k] + b[k].toString().length || b[k].toString().length;
-                a.sum += b[k].toString().length;
-            }
-            return a;
-        } , {sum:0});
-        console.log('sizePerc');
-        console.log(sizePerc);
-        const widthPerc = header.map(k=>Math.round(sizePerc[k]/sizePerc.sum*100));
-        console.log(widthPerc);
-        items.push(<MdlListItem      key = {v4()}
-                                     num_col={header.length}
-                                     col_contents={header}
-                                     header={true}
-                                     bsStyle="success"
-                                     widthPerc = {widthPerc}
-                                     style={Contents.defaultValue.listHeader}/>);
-        contents.slice(1).forEach(e => {
+
+        const tableHeader = header.map(e=> <TableHeader style={{}} key={v4()} name={e}>{e}</TableHeader>);
+        const tableData = contents.slice(1).map(e=> {
             const {_id} = e;
-            const data = header.map(k => e[k])
-            let checkRef;
-            items.push(<MdlListItem
-                key = {v4()}
-                num_col = {data.length}
-                col_contents={data}
-                checkRef={r=>checkRef = r}
-                rowClick={e=>{
-                    if(e.target.nodeName !== 'INPUT')
-                        checkRef.checked = !(checkRef.checked);
-                    e.stopPropagation();
-                    console.log({...this.state.deleteList , [_id] : checkRef.checked })
-                    this.setState({deleteList : {...this.state.deleteList , [_id] : checkRef.checked }})
-                }}
-                checked={this.state.deleteList[_id]}
-                updateItem={()=>this.handleUpdateButton(_id , e)}
-                widthPerc={widthPerc}
-            />
-            )});
-        return <ul className="mdl-list">{items}</ul>;
+            return {
+                ...e, mdlRowProps: {
+                    onClick: E => {
+                        console.log(E.target);
+                        E.stopPropagation();
+                        if( !(/checkbox/.test(E.target.className)))
+                            this.handleUpdateButton(_id, e);
+                    },
+                }
+            }
+        });
+
+
+
+        return <DataTable
+                    sortable
+                    selectable
+                    shadow={0}
+                    rowKeyColumn="_id"
+                    rows={tableData}
+                    onSelectionChanged={e=>{
+                        for (var k in this.state.deleteList) {
+                            this.state.deleteList[k] = false;
+                        }
+                        e.forEach(k=>this.state.deleteList[k]= true)
+                    }}
+                    style={{width:"100%" , overflow:"scroll"}}
+                    >
+                {tableHeader}
+                </DataTable>;
+
+
+        // items.push(<MdlListItem
+        //                 key = {v4()}
+        //                 num_col={header.length}
+        //                 col_contents={header}
+        //                 header={true}
+        //                 // widthPerc = {widthPerc}
+        //                 style={Contents.defaultValue.listHeader}
+        //                 checkRef={r=>checkAll = r}
+        //                 checked={this.state.deleteList.checkAll}
+        //                 rowClick={e=>{
+        //                     e.stopPropagation();
+        //                     if( e.target.nodeName === 'INPUT') {
+        //                         console.log('checked : '+checkAll.checked);
+        //                         var obj ={checkAll: checkAll.checked};
+        //                         contents.slice(1).reduce((a,b)=>{a[b._id] = checkAll.checked; return a;} , obj)
+        //                         this.setState({deleteList : obj})
+        //                     }
+        //                 }
+        //                 }/>);
+        // contents.slice(1).forEach(e => {
+        //     const {_id} = e;
+        //     const data = header.map(k => e[k])
+        //     let checkRef;
+        //     items.push(<MdlListItem
+        //         key = {v4()}
+        //         num_col = {data.length}
+        //         col_contents={data}
+        //         checkRef={r=>checkRef = r}
+        //         rowClick={e=>{
+        //             if(e.target.nodeName !== 'INPUT')
+        //                 checkRef.checked = !(checkRef.checked);
+        //             .stopPropagation();
+        //             console.log({...this.state.deleteList , [_id] : checkRef.checked })
+        //             this.setState({deleteList : {...this.state.deleteList , [_id] : checkRef.checked }})
+        //         }}
+        //         checked={this.state.deleteList[_id]}
+        //         updateItem={()=>this.handleUpdateButton(_id , e)}
+        //         // widthPerc={widthPerc}
+        //     />
+        //     )});
+        // return <table className="mdl-data-table mdl-js-data-table mdl-data-table--selectable" style={{paddingTop: "0px" , width: "100%" , height: "715px" , overflow: "scroll"}}>{items}</table>;
     }
 
     getFieldType(k) {
@@ -315,7 +351,8 @@ export default class Contents extends React.Component {
         } = this.state;
 
         const {
-            mainContentsStyle
+            mainContentsStyle,
+            sideBarContentsStyle
         } = Contents.defaultValue;
 
 
@@ -327,7 +364,8 @@ export default class Contents extends React.Component {
 
             <div>
                 <Body sideBarContents={this.makeSideBarContentList()}
-                      mainContentsStyle = {mainContentsStyle}>
+                      mainContentsStyle = {mainContentsStyle}
+                        sideBarContentsStyle = {sideBarContentsStyle}>
                 {this.makeContentList(mainContents)}
                 </Body>
                 <Modal show={show}
