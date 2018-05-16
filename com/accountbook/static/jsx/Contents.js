@@ -163,9 +163,13 @@ export default class Contents extends React.Component {
                         for (var k in recruit_mapping) {
                             req[recruit_mapping[k]] = e[k];
                         }
-
-                        AjaxUtils.post(routes['get_table_contents'],
-                            {...req, tableName: 'recruit_link'});
+                        if(req.hasOwnProperty('_id') && req['use_yn'] === 'N') {
+                            AjaxUtils.delete(routes['get_table_contents'],
+                                {_id: [req['_id']] , tableName:'recruit_link'});
+                        }else {
+                            AjaxUtils.post(routes['get_table_contents'],
+                                {...req, tableName: 'recruit_link'});
+                        }
 
                     })
                     return mainContents;
@@ -226,8 +230,15 @@ export default class Contents extends React.Component {
                                 break;
                             }
                         }
-                        AjaxUtils.post(routes['get_table_contents'],
-                        {...e, tableName: 'recruit_link'})
+
+                        if(e.hasOwnProperty('_id') && e['use_yn'] === 'N') {
+                            AjaxUtils.post(routes['get_table_contents'],
+                            {_id:[e['_id']], tableName: 'recruit_link'})
+                        }else {
+                            AjaxUtils.post(routes['get_table_contents'],
+                            {...e, tableName: 'recruit_link'})
+                        }
+
                     })
             })
     }
@@ -329,7 +340,7 @@ export default class Contents extends React.Component {
         const header = Object.keys(contents[0]);
 
 
-        const tableHeader = header.filter(e=>e!=='start_date').map(e=> <TableHeader style={{}} key={v4()} name={e}>{e}</TableHeader>);
+        const tableHeader = header.filter(e=>!(['start_date','use_yn','end_date'].includes(e))).map(e=> <TableHeader style={{}} key={v4()} name={e}>{e}</TableHeader>);
         const tableData = contents.slice(1).map(e=> {
             const {_id} = e;
             return {
