@@ -33,6 +33,10 @@ routes = {
     'get_routes' : was+'/accountbook/routes',
 
 
-    'naver_recruit_link' : 'http://recruit.navercorp.com/naver/job/listJson',
+    'naver_recruit_link' : 'https://recruit.navercorp.com/naver/job/listJson',
+    'mobile_naver_recruit_link' : 'https://recruit.navercorp.com/naver/m/job/listJson',
+    'kakao_recruit_link' : 'https://careers.kakao.com/jobs?company=KAKAO&part=TECHNOLOGY&page=',
+    'kakao_host' : 'https://careers.kakao.com',
+    'kakao_lastpage': was+'/lastpage',
 }
 

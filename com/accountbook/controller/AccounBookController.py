@@ -5,6 +5,7 @@ import json;
 from flask import render_template ,request ,redirect , send_from_directory;
 from com.accountbook.repository.AccountBookRepository import AccountBookRepository;
 from com.accountbook.config.routes import routes;
+import subprocess;
 '''
 어플리케이션의 route 경로를 담당
 '''
@@ -145,6 +146,13 @@ def unknownMessagePattern():
 @app.route(routes['recruit_link'] , methods=['GET'])
 def recruitLink():
     return index();
+
+@app.route(routes['kakao_lastpage'] , methods=['GET'])
+def kakaoRecruit():
+    print(request.args);
+    f = subprocess.check_output(['curl',routes['kakao_recruit_link']+request.args.get('page')]);
+    return f;
+
 
 
 

@@ -36,11 +36,12 @@ export default class AjaxUtils {
         const id = Spinner.forEach(e=>e.show())
         const {message , formData } = props;
         if( formData ) {
-            const body = new FormData();
-            for ( var k in data ) {
-                body.set(k , data[k]);
-            }
-            data = body;
+            // const body = new FormData();
+            // for ( var k in data ) {
+            //     body.set(k , data[k]);
+            // }
+            // data = body;
+            data = AjaxUtils.qs(data).slice(1);
         }
         return axios({
             method: 'post',
@@ -94,7 +95,6 @@ export default class AjaxUtils {
 
     static all(...requests) {
         return axios.all(requests).catch(err => {
-            Spinner.forEach(e=>e.hide(id));
             AjaxUtils.errorHandler(err)});
     }
 }

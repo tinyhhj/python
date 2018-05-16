@@ -20,6 +20,9 @@ export default class Contents extends React.Component {
         this.inputKeySetting = this.inputKeySetting.bind(this);
         this.handleSearchBtn = this.handleSearchBtn.bind(this);
         this.makeSideBarContentList = this.makeSideBarContentList.bind(this);
+        this.getKakaoRecruitPages = this.getKakaoRecruitPages.bind(this);
+        this.getKakaoRecruitInfos = this.getKakaoRecruitInfos.bind(this);
+        this.getNaverRecruitInfos = this.getNaverRecruitInfos.bind(this);
         this.mGetIn = this.mGetIn.bind(this);
         this.init = this.init.bind(this);
     }
@@ -61,8 +64,10 @@ export default class Contents extends React.Component {
     }
 
     componentDidMount() {
+        console.log('didmount');
+        window.update = true;
+        this.interval = setInterval(()=>window.update =true , 5*1000*60);
         this.init()
-
 
         // if(this.props.tableName === 'recruit_link') {
         //     console.log('table ' + this.props.tableName);
@@ -92,8 +97,9 @@ export default class Contents extends React.Component {
     }
 
     init() {
+
         let results;
-        return AjaxUtils.get(routes['get_table_contents'] , {tableName: this.props.tableName })
+        var p = AjaxUtils.get(routes['get_table_contents'] , {tableName: this.props.tableName })
             .then(res=> {
                 results=res.data;
                 console.log('reset..');
@@ -105,39 +111,148 @@ export default class Contents extends React.Component {
                     modalInput: {}
                 })
                 return res.data;
+            });
+
+        if (this.props.tableName === 'recruit_link' && window.update) {
+            p.then(mainContents=>{
+                // console.log(mainContents);
+                return AjaxUtils.all(
+                this.getKakaoRecruitInfos(mainContents),
+                this.getNaverRecruitInfos(mainContents))
+            }).then(()=>{
+                window.update = false;
+                this.init();
             })
-        .then(res=> {
-                if(this.props.tableName !== 'recruit_link') throw 'no recruit_link';
-                return AjaxUtils.post(routes['naver_recruit_link'] , { classNm: 'developer',
-                                                                entTypeCd: '',
-                                                                searchTxt: '',
-                                                                startNum: 1,
-                                                                endNum: 9999} , {formData : true } );
-            })
-            .then(res => {
-                const {mainContents} = this.state;
-                const recruit_lists = res.data.filter(e => e.openYn === 'Y' && !mainContents.slice(1).reduce((a,b)=>a | b['recruit_title'] === e.jobNm , false));
-                console.log(mainContents.slice(1));
-                console.log(recruit_lists);
-                const recruit_mapping = Contents.defaultValue.recruit_mapping.naver;
-                recruit_lists.map((e,i) => {
-                    const req = {company_name : 'naver'};
-                    for ( var k in recruit_mapping) {
-                        if(k === 'dDay' && !e[k]) {
-                            e[k] = "9999";
+
+        }
+
+        return p;
+
+    }
+    getNaverRecruitInfos(mainContents) {
+        return AjaxUtils.all(AjaxUtils.post(routes['naver_recruit_link'], {
+                    classNm: 'developer',
+                    entTypeCd: '',
+                    searchTxt: '',
+                    startNum: 1,
+                    endNum: 9999
+                }, {formData: true}),
+                AjaxUtils.post(routes['mobile_naver_recruit_link'], {
+                    classNm: 'developer',
+                    entTypeCd: '',
+                    searchTxt: '',
+                    startNum: 1,
+                    endNum: 9999
+                }, {formData: true}),
+            )
+                .then(res => {
+                    // mobile or pc 둘중 하나 선택
+                    res = res[0].data.length >= res[1].data.length ? res[0] : res[1];
+                    const recruit_lists = res.data;
+                    const recruit_mapping = Contents.defaultValue.recruit_mapping.naver;
+                    recruit_lists.map((e, i) => {
+                        const req = {company_name: 'naver'};
+                        const naver = mainContents.filter(v=>v['company_name']==='naver')
+                        for (var i = 0; i < naver.length; i++) {
+                            var ee = naver[i];
+                            if (e.jobNm === ee['recruit_title'] && e.staYmd === ee['start_date'] && e.endYmd === ee['end_date']) {
+                                req['_id'] = ee['_id'];
+                                break;
+                            }
                         }
-                        req[recruit_mapping[k]] = e[k];
+                        for (var k in recruit_mapping) {
+                            req[recruit_mapping[k]] = e[k];
+                        }
 
-                    }
-                    console.log(req);
-                    AjaxUtils.post(routes['create_table_contents'] ,
-                        {...req , tableName : 'recruit_link'});
+                        AjaxUtils.post(routes['get_table_contents'],
+                            {...req, tableName: 'recruit_link'});
 
+                    })
+                    return mainContents;
                 })
-                return results;
-            })
-            .catch(e=>{console.log(e); return results;});
+                .catch(e => {
+                    console.log(e);
+                    return mainContents;
+                });
+    }
+    getKakaoRecruitInfos(mainContents) {
+        return this.getKakaoRecruitPages().then(res => {
+                res.map(e => {
+                    var el = document.createElement('html');
+                    el.innerHTML = e.data;
 
+                    var titleArr = Array.prototype.slice.call(el.querySelectorAll('.txt_tit')).map(e => e.innerHTML);
+                    var linkArr = Array.prototype.slice.call(el.querySelectorAll('.link_notice')).map(e => e.href);
+                    var recruitArr = Array.prototype.slice.call(el.querySelectorAll('.link_notice'))
+                        .map(e => {
+                            var ee = e.parentElement.querySelector('span.txt_period');
+                            return ee ? Array.prototype.slice.call(ee.querySelectorAll('span:not(.txt_bar)')).map(e => e.innerHTML).join(', ') : '';
+                        });
+                    // console.log(linkArr);
+
+                    return [titleArr,
+                        linkArr,
+                        recruitArr
+                    ];
+                }).reduce((a, b) => {
+                    return [a[0].concat(b[0]), a[1].concat(b[1]), a[2].concat(b[2])];
+                }).reduce((a, b, i) => {
+                    var k;
+                    switch (i) {
+                        case 0:
+                            k = 'recruit_title';
+                            b.forEach(v => a.push({[k]: v, use_yn: 'Y', company_name: 'kakao'}));
+                            break;
+                        case 1:
+                            k = 'recruit_data';
+                            b.forEach((v, idx) => a[idx][k] = routes['kakao_host'] + v.slice(v.indexOf('/jobs')));
+                            break;
+                        case 2:
+                            k = 'remark'
+                            b.forEach((v, idx) => a[idx][k] = v);
+                        // b.forEach((v,idx)=>a[parseInt(idx/2)][k] = )
+                        default:
+                            break;
+                    }
+                    return a;
+                }, [])
+                    .forEach(e => {
+                        // console.log(e);
+                        var kakao = mainContents.filter(ee=>ee['company_name']==='kakao');
+                        // console.log(kakao);
+                        for(var i = 0 ; i < kakao.length; i++) {
+                            if ( kakao[i]['recruit_title'] === e['recruit_title']) {
+                                e['_id'] = kakao[i]['_id'];
+                                break;
+                            }
+                        }
+                        AjaxUtils.post(routes['get_table_contents'],
+                        {...e, tableName: 'recruit_link'})
+                    })
+            })
+    }
+    findLastPage() {
+        var lp = 1;
+        return AjaxUtils.get(routes['kakao_lastpage'],{page:1})
+            .then(res => {
+                var el = document.createElement('html');
+                el.innerHTML = res.data;
+                var recruitPage = el;
+                if( /.*?page=(\d+)/.test(recruitPage.querySelector('.change_page.btn_lst').href) ) {
+                    lp = /.*?page=(\d+)/.exec(recruitPage.querySelector('.change_page.btn_lst').href)[1];
+                }
+                return lp;
+            })
+    }
+
+    getKakaoRecruitPages() {
+        return this.findLastPage().then(res =>{
+           var pages = [];
+           for( var i = 0 ; i < res ; i++) {
+               pages.push(AjaxUtils.get(routes['kakao_lastpage'] , { page: i+1}))
+           }
+           return AjaxUtils.all(...pages);
+        });
 
     }
 
@@ -171,7 +286,7 @@ export default class Contents extends React.Component {
 
     handleCreateButton(modalContents) {
         const { modalInput : {modalButton} } = this.state;
-        console.log(modalContents);
+        // console.log(modalContents);
         if ( modalContents.filter(e => e.props.validationstate !== 'success').length ) {
             Toast.forEach(t=>t.show('warning' , '입력항목을 채워주세요.'));
             return;
@@ -213,7 +328,8 @@ export default class Contents extends React.Component {
         const items = [];
         const header = Object.keys(contents[0]);
 
-        const tableHeader = header.map(e=> <TableHeader style={{}} key={v4()} name={e}>{e}</TableHeader>);
+
+        const tableHeader = header.filter(e=>e!=='start_date').map(e=> <TableHeader style={{}} key={v4()} name={e}>{e}</TableHeader>);
         const tableData = contents.slice(1).map(e=> {
             const {_id} = e;
             return {
@@ -224,7 +340,7 @@ export default class Contents extends React.Component {
                         if( !(/checkbox/.test(E.target.className)))
                             this.handleUpdateButton(_id, e);
                     },
-                }
+                }, recruit_data : <a target="_blank" href={e['recruit_data']}>{e['recruit_data']}</a>
             }
         });
 
