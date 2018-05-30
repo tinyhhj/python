@@ -2,6 +2,7 @@ import axios from 'axios';
 import {spinner as Spinner , toast as Toast} from 'Components';
 
 export default class AjaxUtils {
+    // for some reason need fix
     static _get(url, query , props={}) {
         return axios({
             method: 'get',
