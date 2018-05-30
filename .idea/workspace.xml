@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c4cf1006-658f-4ce9-91ba-e8e5b352bba2" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/com/accountbook/static/js/bundle.js" afterPath="$PROJECT_DIR$/com/accountbook/static/js/bundle.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/com/accountbook/static/jsx/Contents.js" afterPath="$PROJECT_DIR$/com/accountbook/static/jsx/Contents.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -71,11 +70,11 @@
       <file leaf-file-name="Contents.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/com/accountbook/static/jsx/Contents.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="349">
-              <caret line="351" column="68" lean-forward="true" selection-start-line="351" selection-start-column="68" selection-end-line="351" selection-end-column="68" />
+            <state relative-caret-position="126">
+              <caret line="70" column="26" lean-forward="false" selection-start-line="70" selection-start-column="26" selection-end-line="70" selection-end-column="26" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
-                <marker date="1527696867000" expanded="true" signature="14449:14453" ph="..." />
+                <marker date="1527697889000" expanded="true" signature="14475:14479" ph="..." />
               </folding>
             </state>
           </provider>
@@ -940,11 +939,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/com/accountbook/static/jsx/Contents.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="349">
-          <caret line="351" column="68" lean-forward="true" selection-start-line="351" selection-start-column="68" selection-end-line="351" selection-end-column="68" />
+        <state relative-caret-position="126">
+          <caret line="70" column="26" lean-forward="false" selection-start-line="70" selection-start-column="26" selection-end-line="70" selection-end-column="26" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
-            <marker date="1527696867000" expanded="true" signature="14449:14453" ph="..." />
+            <marker date="1527697889000" expanded="true" signature="14475:14479" ph="..." />
           </folding>
         </state>
       </provider>
