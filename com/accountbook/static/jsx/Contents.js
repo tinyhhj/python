@@ -68,7 +68,7 @@ export default class Contents extends React.Component {
         window.update = true;
         this.interval = setInterval(()=>window.update =true , 5*1000*60);
         this.init()
-        // commit exercise
+        // commit exercise early
         // if(this.props.tableName === 'recruit_link') {
         //     console.log('table ' + this.props.tableName);
         //     this.interval = setInterval(() => {
