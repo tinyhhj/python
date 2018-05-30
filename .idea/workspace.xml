@@ -70,11 +70,11 @@
       <file leaf-file-name="Contents.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/com/accountbook/static/jsx/Contents.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="70" column="32" lean-forward="false" selection-start-line="70" selection-start-column="32" selection-end-line="70" selection-end-column="32" />
+            <state relative-caret-position="111">
+              <caret line="69" column="19" lean-forward="false" selection-start-line="69" selection-start-column="19" selection-end-line="69" selection-end-column="19" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
-                <marker date="1527698785000" expanded="true" signature="14481:14485" ph="..." />
+                <marker date="1527699114000" expanded="true" signature="14449:14453" ph="..." />
               </folding>
             </state>
           </provider>
@@ -949,11 +949,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/com/accountbook/static/jsx/Contents.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="70" column="32" lean-forward="false" selection-start-line="70" selection-start-column="32" selection-end-line="70" selection-end-column="32" />
+        <state relative-caret-position="111">
+          <caret line="69" column="19" lean-forward="false" selection-start-line="69" selection-start-column="19" selection-end-line="69" selection-end-column="19" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
-            <marker date="1527698785000" expanded="true" signature="14481:14485" ph="..." />
+            <marker date="1527699114000" expanded="true" signature="14449:14453" ph="..." />
           </folding>
         </state>
       </provider>
