@@ -146,13 +146,16 @@ export default class Contents extends React.Component {
                 }, {formData: true}),
             )
                 .then(res => {
-                    var recruit_host = 'http://recruit.navercorp.com/naver/job/detail/developer?annoId=';
+                    var recruit_host = 'http://recruit.navercorp.com/naver/job/detail/developer';
                     // mobile or pc 둘중 하나 선택
                     res = res[0].data.length >= res[1].data.length ? res[0] : res[1];
                     const recruit_lists = res.data;
                     const recruit_mapping = Contents.defaultValue.recruit_mapping.naver;
                     recruit_lists.map((e, i) => {
-                        const req = {company_name: 'naver' , recruit_data: recruit_host+e.annoId};
+                        const req = {company_name: 'naver',
+                            recruit_data: e.classId && e.jobId ?
+                                recruit_host + AjaxUtils.qs({annoId: e.annoId , classId: e.classId, jobId:e.jobId})
+                                : recruit_host+AjaxUtils.qs({annoId: e.annoId})};
                         const naver = mainContents.filter(v=>v['company_name']==='naver')
                         for (var i = 0; i < naver.length; i++) {
                             var ee = naver[i];
@@ -167,7 +170,9 @@ export default class Contents extends React.Component {
                         if(req.hasOwnProperty('_id') && (req['use_yn'] === 'N'|| req['d_day'] < 0)) {
                             AjaxUtils.delete(routes['get_table_contents'],
                                 {_id: [req['_id']] , tableName:'recruit_link'});
-                        }else {
+                        }else if (req['use_yn']=== 'N' || req['d_day'] < 0) {
+                            //nothing
+                        } else {
                             AjaxUtils.post(routes['get_table_contents'],
                                 {...req, tableName: 'recruit_link'});
                         }

@@ -4,7 +4,7 @@
     <list default="true" id="c4cf1006-658f-4ce9-91ba-e8e5b352bba2" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/com/accountbook/static/js/bundle.js" afterPath="$PROJECT_DIR$/com/accountbook/static/js/bundle.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/com/accountbook/utils/AjaxUtils.js" afterPath="$PROJECT_DIR$/com/accountbook/utils/AjaxUtils.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/com/accountbook/static/jsx/Contents.js" afterPath="$PROJECT_DIR$/com/accountbook/static/jsx/Contents.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -69,14 +69,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Contents.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Contents.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/com/accountbook/static/jsx/Contents.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="201">
-              <caret line="75" column="34" lean-forward="false" selection-start-line="75" selection-start-column="34" selection-end-line="75" selection-end-column="34" />
+            <state relative-caret-position="260">
+              <caret line="157" column="80" lean-forward="false" selection-start-line="157" selection-start-column="80" selection-end-line="157" selection-end-column="80" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
-                <marker date="1527699114000" expanded="true" signature="14449:14453" ph="..." />
+                <marker date="1527782085000" expanded="true" signature="14782:14786" ph="..." />
               </folding>
             </state>
           </provider>
@@ -112,11 +112,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AjaxUtils.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AjaxUtils.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/com/accountbook/utils/AjaxUtils.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="5" column="23" lean-forward="false" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
+            <state relative-caret-position="1379">
+              <caret line="93" column="13" lean-forward="false" selection-start-line="93" selection-start-column="11" selection-end-line="93" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -137,8 +137,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>findLastPage</find>
-      <find>request</find>
       <find>destroy</find>
       <find>component</find>
       <find>interval</find>
@@ -167,6 +165,8 @@
       <find>makeSortable</find>
       <find>className</find>
       <find>renderCell</find>
+      <find>-45</find>
+      <find>recruit_host</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -226,9 +226,9 @@
         <option value="$PROJECT_DIR$/com/accountbook/templates/index.html" />
         <option value="$PROJECT_DIR$/com/accountbook/config/routes.py" />
         <option value="$PROJECT_DIR$/com/accountbook/config/AccountBookConfig.py" />
-        <option value="$PROJECT_DIR$/com/accountbook/static/jsx/Contents.js" />
         <option value="$PROJECT_DIR$/com/accountbook/static/jsx/Components.js" />
         <option value="$PROJECT_DIR$/com/accountbook/utils/AjaxUtils.js" />
+        <option value="$PROJECT_DIR$/com/accountbook/static/jsx/Contents.js" />
       </list>
     </option>
   </component>
@@ -241,10 +241,10 @@
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="31" />
-    <option name="y" value="51" />
-    <option name="width" value="1401" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="27" />
+    <option name="y" value="25" />
+    <option name="width" value="1402" />
     <option name="height" value="878" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -516,16 +516,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="31" y="51" width="1401" height="878" extended-state="0" />
-    <editor active="true" />
+    <frame x="0" y="22" width="1405" height="878" extended-state="6" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21912919" sideWeight="0.49529412" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21850534" sideWeight="0.49529412" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24069479" sideWeight="0.50535333" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24069479" sideWeight="0.5053381" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32974428" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24069479" sideWeight="0.49464667" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29404467" sideWeight="0.49466193" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24930556" sideWeight="0.5047059" order="2" side_tool="true" content_ui="tabs" />
@@ -933,17 +932,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/com/accountbook/static/jsx/Contents.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="75" column="34" lean-forward="false" selection-start-line="75" selection-start-column="34" selection-end-line="75" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-            <marker date="1527699114000" expanded="true" signature="14449:14453" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/com/accountbook/static/jsx/Components.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="149">
@@ -954,9 +942,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/com/accountbook/utils/AjaxUtils.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="5" column="23" lean-forward="false" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
+        <state relative-caret-position="1379">
+          <caret line="93" column="13" lean-forward="false" selection-start-line="93" selection-start-column="11" selection-end-line="93" selection-end-column="13" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/accountbook/static/jsx/Contents.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="157" column="80" lean-forward="false" selection-start-line="157" selection-start-column="80" selection-end-line="157" selection-end-column="80" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+            <marker date="1527782085000" expanded="true" signature="14782:14786" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
